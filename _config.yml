@@ -1,0 +1,64 @@
+
+# SEO settings
+title: "clickclick"
+title2: "boom" # default: ""
+description: "i have a blog now."
+keywords: "mrpnkt, blog, github, jekyll, test, beta"
+url: http://mrpnkt.github.io/ # site url
+#baseurl: ""  apply repo name if use it under gh-pages branch
+baseurl: null # apply null if repo name is something like username.github.io
+
+google_analytics: #  UA-XXXXX-XX
+repo: http://github.com/mrpnkt/mrpnkt.github.io
+disqus_shortname: mrpnkt
+twitter_username: mrpnkt
+comments: true
+
+# Build settings
+permalink   : /:year/:title/
+markdown    : kramdown
+highlighter : rouge
+
+source: ./
+destination: ./_site
+
+# Tags
+
+tag_page_layout: tag_page
+tag_page_dir: tag
+
+# Sass configuration
+sass:
+  sass_dir: assets/scss
+  style: compressed # expanded
+
+# Author settings
+author:
+  name     : "mrpnkt"
+  job      : "websomethingsomething"
+  bio      : "i'm learning to break stuff"
+  thumb    : /images/author.jpg
+  email    : mr@mrpnkt.com
+  url      : https://mrpnkt.github.io
+  github   : https://github.com/mrpnkt
+  twitter  : https://twitter.com/mrpnkt
+  facebook : # https://www.facebook.com/profile.php?id=666
+  linkedin : https://es.linkedin.com/in/mrpnkt
+
+# social settings
+og_locale: "en_US"
+twitter_card: "summary_large_image"
+twitter_site: "@mrpnkt"
+
+gems:
+  - bourbon
+  - jekyll-paginate
+
+# navbar pages
+navbar:
+  - slug : about
+    title: About
+  - slug : blog
+    title: Blog
+
+exclude: ["gulp", "node_modules", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]
