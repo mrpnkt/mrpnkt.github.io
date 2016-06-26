@@ -1,0 +1,201 @@
+@font-face {
+    font-family: 'DroidSerifBold';
+    src: url('../fonts/eot/DroidSerif-Bold-webfont.eot');
+    src: url('../fonts/eot/DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/woff/DroidSerif-Bold-webfont.woff') format('woff'),
+         url('../fonts/ttf/DroidSerif-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/svg/DroidSerif-Bold-webfont.svg#DroidSerifBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DroidSerifItalic';
+    src: url('../fonts/eot/DroidSerif-Italic-webfont.eot');
+    src: url('../fonts/eot/DroidSerif-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/woff/DroidSerif-Italic-webfont.woff') format('woff'),
+         url('../fonts/ttf/DroidSerif-Italic-webfont.ttf') format('truetype'),
+         url('../fonts/svg/DroidSerif-Italic-webfont.svg#DroidSerifItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DroidSerifBoldItalic';
+    src: url('../fonts/eot/DroidSerif-BoldItalic-webfont.eot');
+    src: url('../fonts/eot/DroidSerif-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/woff/DroidSerif-BoldItalic-webfont.woff') format('woff'),
+         url('../fonts/ttf/DroidSerif-BoldItalic-webfont.ttf') format('truetype'),
+         url('../fonts/svg/DroidSerif-BoldItalic-webfont.svg#DroidSerifBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DroidSerif';
+    src: url('../fonts/eot/DroidSerif-Regular-webfont.eot');
+    src: url('../fonts/eot/DroidSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/woff/DroidSerif-Regular-webfont.woff') format('woff'),
+         url('../fonts/ttf/DroidSerif-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/svg/DroidSerif-Regular-webfont.svg#DroidSerif') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DroidSansMono';
+    src: url('../fonts/eot/DroidSansMono-webfont.eot');
+    src: url('../fonts/eot/DroidSansMono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/woff/DroidSansMono-webfont.woff') format('woff'),
+         url('../fonts/ttf/DroidSansMono-webfont.ttf') format('truetype'),
+         url('../fonts/svg/DroidSansMono-webfont.svg#droid_sans_monoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+::selection {
+  background: $highlight-color;
+  color: $dark-gray-color;
+}
+::-moz-selection {
+  background: $highlight-color;
+  color: $dark-gray-color;
+}
+
+body {
+  color: $base-font-color;
+  font-family: $base-font-family;
+  //font-feature-settings: "kern", "liga", "pnum";
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font-family;
+  font-size: $base-font-size;
+  line-height: $heading-line-height;
+  margin: $small-spacing 0 $small-spacing 0;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: rem(30);
+}
+
+h2 {
+  font-size: rem(26);
+}
+
+h3 {
+  font-size: rem(24);
+}
+
+h4 {
+  font-size: rem(20);
+}
+
+h5,
+h6 {
+  font-size: rem(16);
+}
+
+p {
+  margin: 0 0 $small-spacing;
+
+  &.lead {
+    font-size: rem(22);
+    font-weight: 300;
+  }
+}
+
+a {
+  color: $action-color;
+  text-decoration: none;
+  transition: color $base-duration $base-timing;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: shade($action-color, 25%);
+  }
+}
+
+hr {
+  border-bottom: $base-border;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  margin: $base-spacing 0;
+}
+
+img,
+picture {
+  margin: 0;
+  max-width: 100%;
+}
+
+blockquote {
+  padding: 0 0 0 $base-spacing;
+  margin: $base-spacing 0;
+  color: $medium-gray-color;
+  line-height: 1.8;
+  border-left: $small-spacing solid $light-gray-color;
+}
+
+code {
+  background: none;
+  border-radius: 0;
+  border: none;
+  font-family: $code-font-family;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0 5px;
+  background-color: lighten($light-gray-color, 13%);
+}
+
+pre {
+  -webkit-overflow-scrolling: touch;
+  font-family: $code-font-family;
+  font-size: 0.85em;
+  margin: 0;
+  padding: 5px 10px !important;
+  overflow: auto;
+  max-height: 60em;
+  white-space: pre;
+
+  code {
+    line-height: 1.75em;
+    padding: 0 !important;
+  }
+}
+
+strong, b {
+  font-family: $fat-font-family;
+  font-style: bold;
+}
+
+em, i {
+  font-family: $italo-font-family;
+  font-style: italic;
+}
+
+ul,
+ol,
+dl {
+    margin-top: 0;
+    margin-left: 1.2em;
+    margin-bottom: 1rem;
+    list-style-type: square;
+    list-style-position: outside;
+    list-style-image: none;
+}
