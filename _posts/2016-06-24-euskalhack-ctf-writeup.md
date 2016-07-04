@@ -2,6 +2,9 @@
 title: Euskalhack CTF Writeup
 date: '2016-06-24 21:17:00'
 layout: post
+tags:
+- ctf
+- euskalhack
 ---
 ## DNS codified (50pts)
 
