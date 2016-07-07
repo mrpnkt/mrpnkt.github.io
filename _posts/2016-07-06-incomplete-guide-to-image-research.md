@@ -1,7 +1,11 @@
 ---
-title: Incomplete Guide to Image Research (Part 1)
+title: Incomplete Guide to Image Research
 date: '2016-07-06 05:40:00'
 layout: post
+tags:
+  - osint
+  - research
+  - guide
 ---
 <img src="{{ site.baseurl }}/forestryio/images/Image_in_Glossographia.png" style="float:right; margin-left: 10px;" />Pics (Photos, Logos, Icons, Maps) can be of great value in OSINT Investigations. This post is a roundup of resources and tricks. This guide will show you how to search, find, get, scrape, analyze digital images.
 
