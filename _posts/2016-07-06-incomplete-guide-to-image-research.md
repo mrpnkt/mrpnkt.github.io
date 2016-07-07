@@ -106,8 +106,8 @@ Recommended Read: [MetaUseful & MetaCreepy (Bellingcat)](https://www.bellingcat.
 
 **Verification**
 
-Piecing together visual clues for verification
-https://firstdraftnews.com/resource/learning-to-piece-together-verification-clues/
+Every eyewitness photo and video will contain visual clues that can help with verification. Learn more about what they are and how to find them:
 
-Verification Handbook
-https://firstdraftnews.com/resource/the-verification-handbook/
+[Piecing together visual clues for verification](https://firstdraftnews.com/resource/learning-to-piece-together-verification-clues/)
+
+[Verification Handbook](https://firstdraftnews.com/resource/the-verification-handbook/)
