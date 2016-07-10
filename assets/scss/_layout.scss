@@ -95,6 +95,9 @@ section.intro, .post-header, .page-header {
     padding: 0 .2em;
     background: $highlight-color;
   }
+  .jobTitle {
+   text-decoration: line-through;
+  }
 
   a {
     @extend .link;
