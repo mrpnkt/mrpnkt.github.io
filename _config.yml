@@ -35,8 +35,8 @@ sass:
 # Author settings
 author:
   name     : "M"
-  job      : "~~programmer~~"
-  bio      : "and this is my blog"
+  job      : "webmaster"
+  bio      : "…and this is my blog"
   thumb    : /images/author.jpg
   email    : mr@mrpnkt.com
   url      : https://mrpnkt.github.io
