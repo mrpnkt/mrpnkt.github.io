@@ -95,7 +95,7 @@ section.intro, .post-header, .page-header {
     padding: 0 .2em;
     background: $highlight-color;
   }
-  .jobTitle {
+ em[itemprop="jobTitle"] {
    text-decoration: line-through;
   }
 
