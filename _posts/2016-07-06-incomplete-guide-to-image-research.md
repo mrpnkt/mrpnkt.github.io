@@ -78,7 +78,7 @@ I'd suggest to learn the basic syntaxt of `wget` so you can start mass-downloadi
 $ wget -nd -r -P /save/location -A jpeg,jpg,bmp,gif,png http://www.domain.com
 ```
 A more advanced bash script that scrapes images from a list of urls with wget:
-https://github.com/eduardschaeli/wget-image-scraper
+[wget images scraper](https://github.com/eduardschaeli/wget-image-scraper)
 
 As sites grow larger and more dynamic you need more sophisticated tools. [HTTrack](http://www.httrack.com/) is pretty simple to use and comes with a lot of options (proxy, custom browser agents, timeouts, limits, file inclusion/exclusion, ...).
 
