@@ -1,5 +1,5 @@
 ---
-title: Incomplete Guide to Image Research
+title: Pics, Pics, Pics - Incomplete Guide to Image Research
 date: '2016-07-06 05:40:00'
 layout: post
 tags:
