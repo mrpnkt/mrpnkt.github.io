@@ -19,17 +19,19 @@ If you are searching for images there is more than [Google](https://images.googl
 
 When searching for images use some common sense and [advanced search tools](https://images.google.com/advanced_image_search?hl=uz) if available. Remember you can jump in time, search for faces or photos, search by color or limit your search to top-level/country domains or websites. Use a translator and try searching in other languages too.
 
-[twipho](https://twipho.net/) and [twicsy](http://twicsy.com/) search media posted on twitter based on geolocation. Use the [Location Guard](https://github.com/chatziko/location-guard) Browser Extension to fake your location (set to fixed location) in order to get media from the region of interest.
+[twipho](https://twipho.net/) and [twicsy](http://twicsy.com/) search media posted on twitter based on geolocation, [Worldcam](http://worldc.am/) searches Instagram by location. [cree.py](http://www.geocreepy.com) is a geolocation OSINT tool. Offers geolocation information gathering through social networking platforms.
+
+Use the [Location Guard](https://github.com/chatziko/location-guard) Browser Extension to fake your location (set to fixed location) in order to get media from the region of interest.
 
 ![]({{ site.baseurl }}/forestryio/images/LocationGuard.png)
 
-Research on image databases and forums based on your area of interest. To mention only a few examples:
+Do your research to find image databases and forums based on your area of interest. To mention only a few examples:
 
 * [Panoramio (Landscape/Urban Photography on Google Maps)](http://www.panoramio.com/)
 * [Skyscrapercity (forum for skyscraper enthusiasts, high-res architecture photos, blueprints, large community)](http://www.skyscrapercity.com/)
 * [Public Sources for Satellite and Aerial Photos and Maps](https://cryptome.org/gis-sources.htm)
 
-As you might imagine high-resolution photos of control-rooms, desks, whiteboards, phones, screens, license plates, faces can reveal interesting information. Have a look at what you can find when you know what to search for:
+As you might imagine high-resolution photos of control-rooms, cctv, desks, whiteboards, phones, screens, license plates, faces can reveal interesting information. Have a look at what you can find when you know what to search for:
 
 ![]({{ site.baseurl }}/forestryio/images/whattosearchfor.jpg)
 
