@@ -110,6 +110,8 @@ Recommended Read: [MetaUseful & MetaCreepy (Bellingcat)](https://www.bellingcat.
 
 Every eyewitness photo and video will contain visual clues that can help with verification. Learn more about what they are and how to find them:
 
+[How to verify images like a pro with Google Earth](https://firstdraftnews.com/resource/how-to-verify-images-like-a-pro-with-google-earth/)
+
 [Piecing together visual clues for verification](https://firstdraftnews.com/resource/learning-to-piece-together-verification-clues/)
 
 [Verification Handbook](https://firstdraftnews.com/resource/the-verification-handbook/)
