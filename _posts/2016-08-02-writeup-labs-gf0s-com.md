@@ -2,9 +2,8 @@
 title: Writeup labs.gf0s.com
 date: '2016-08-02 17:45:00'
 layout: post
+tags: CTF
 ---
-
-# Writeup labs.gf0s.com
 
 ## HackLab #1
 
