@@ -2,6 +2,7 @@
 title: 'Writeup Mr-Robot: 1'
 date: '2016-08-09 08:56:00'
 layout: post
+tags: CTF
 ---
 # Walkthrough "Mr-Robot: 1"
 
