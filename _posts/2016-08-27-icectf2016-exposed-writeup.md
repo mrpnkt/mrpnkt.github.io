@@ -2,6 +2,10 @@
 title: '#IceCTF 2016 "Exposed" Writeup'
 date: '2016-08-27 00:10:00'
 layout: post
+tags:
+- CTF
+- Writeup
+- IceCTF2016
 ---
 ![]({{ site.baseurl }}/forestryio/images/IceCTF.png)
 
