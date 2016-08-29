@@ -1,5 +1,5 @@
 ---
-title: "#IceCTF 2016 Writeup"
+title: '#IceCTF 2016 "Exposed"'
 date: '2016-08-27 00:00:00'
 layout: post
 tags:
