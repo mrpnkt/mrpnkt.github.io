@@ -1,6 +1,6 @@
 ---
-title: '#IceCTF 2016 "Exposed" Writeup'
-date: '2016-08-27 00:10:00'
+title: "#IceCTF 2016 Writeup"
+date: '2016-08-27 00:00:00'
 layout: post
 tags:
 - CTF
@@ -11,11 +11,62 @@ tags:
 
 This is part of a few #IceCTF writeups I'm going to put up here. [#IceCTF 2016](https://icec.tf/) was the second CTF i participated. I had a great time and some sleepless nights. Structuring my messy notes helps me to memorize what I learned. Even though I made it only to [295](https://ctftime.org/event/319) (1146.000points), a writeup on some of the challenges I solved may inspire more people to try.
 
+#### Stage 2
+
+* "Search", misc, 40pts
+* "Exposed", web, 60pts
+
+## Stage 2 "Search", misc, 40pts
+> There's something about this domain... search.icec.tf, I don't see anything, but maybe its all about the conTEXT. 
+
+### My Solution
+
+Surfing http://search.icec.tf/ returns a ERR_NAME_NOT_RESOLVED. I tried using proxies, Tried surfing through Iceland VPN, Tor, nothing. Something wrong with the DNS configuration? conTEXT may refer to the TXT entry - a good place to hide a flag. 
+
+```bash
+
+$ dig search.icec.tf ANY
+
+;; ANSWER SECTION:
+search.icec.tf.		3788	IN	HINFO	"Please stop asking for ANY" "See draft-ietf-dnsop-refuse-any"
+
+```
+
+Since I can't ask for ANY I'll have to ask for TXT:
+
+```bash
+
+dig search.icec.tf TXT
+
+; <<>> DiG 9.10.4-P2 <<>> search.icec.tf TXT
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 10175
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;search.icec.tf.			IN	TXT
+
+;; ANSWER SECTION:
+search.icec.tf.		299	IN	TXT	"**IceCTF{flag5_all_0v3r_the_Plac3}**"
+
+;; Query time: 252 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: lun ago 29 14:46:35 CEST 2016
+;; MSG SIZE  rcvd: 88
+
+```
+
+**More about dig: **
+[DiG HOWTO How to use dig to query DNS name servers](https://www.madboa.com/geek/dig/)
+
 ## Stage 2 "Exposed", web, 60pts
 
 > John is pretty happy with himself, he just made his first website (http://exposed.vuln.icec.tf/)! He used all the hip and cool systems, like NginX, PHP and Git! Everyone is so happy for him, but can you get him to give you the flag?
 
-## My Solution
+### My Solution
 
 The mentioned technologies look like a first hint. I start by enumerating all technologies mentioned:
 
@@ -162,7 +213,7 @@ and an earlier version of `flag.php`:
 
 ![]({{ site.baseurl }}/forestryio/images/exposed.png)
 
-## Easy Fix
+### Easy Fix
 
 ```
 location ~ /\.git {
