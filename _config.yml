@@ -2,7 +2,7 @@
 # SEO settings
 title: "clickclick"
 title2: "boom" # default: ""
-description: "i have a blog now."
+description: "osint, forensics, research, random infosec"
 keywords: "mrpnkt, blog, github, jekyll, test, beta"
 url: http://mrpnkt.github.io/ # site url
 #baseurl: ""  apply repo name if use it under gh-pages branch
