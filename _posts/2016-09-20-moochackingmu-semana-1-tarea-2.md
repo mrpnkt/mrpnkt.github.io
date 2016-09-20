@@ -2,6 +2,8 @@
 title: "#moocHackingMU - Semana 1 - Tarea 2"
 date: '2016-09-20 00:00:00'
 layout: post
+tags:
+- moocHackingMU
 ---
 ### TAREA 2: Búsqueda y puesta en común de recursos
 
