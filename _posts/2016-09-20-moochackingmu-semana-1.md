@@ -108,11 +108,9 @@ https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en
 
 ```
 
- o diversas herramientas online:
+ o usando las diversas herramientas online:
 
-![]({{ site.baseurl }}/forestryio/images/whois_1.png)
-
-![](http://mrpnkt.github.io/forestryio/images/whois_2.png)
+![]({{ site.baseurl }}/forestryio/images/whois_1-1.png)
 
 Una herramienta para la línea de comandos en Windows:
 https://download.sysinternals.com/files/WhoIs.zip
