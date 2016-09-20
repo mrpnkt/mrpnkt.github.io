@@ -2,6 +2,8 @@
 title: "#moocHackingMU - Semana 1 - Tarea 1"
 date: '2016-09-19 08:41:00'
 layout: post
+tags:
+#moocHackingMU
 ---
 ## TAREA 1: Herramientas básicas para obtener información de servidores externos
 
