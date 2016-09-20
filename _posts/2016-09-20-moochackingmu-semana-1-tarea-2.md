@@ -5,6 +5,7 @@ layout: post
 tags:
 - moocHackingMU
 ---
+
 ### TAREA 2: Búsqueda y puesta en común de recursos
 
 > En esta tarea te proponemos que identifiques tres espacios web relacionados con la temática de este curso. Dos de ellos deben ser sitios que puedan ser considerados relevantes por la cantidad y calidad de recursos que ofrecen sobre Hacking. Pueden ser blogs personales, sitios web de organizaciones, empresas o grupos de usuarios de la red que comparten contenidos de calidad sobre Hacking. 
