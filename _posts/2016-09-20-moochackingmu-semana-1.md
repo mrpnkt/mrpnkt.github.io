@@ -46,7 +46,7 @@ Control-C
 
 > WHOIS es un protocolo TCP basado en petición/respuesta que se utiliza para efectuar consultas en una base de datos que permite determinar el propietario de un nombre de dominio o una dirección IP en Internet. *(Wikipedia)*
 
-Para obtener la información de una base de datos WHOIS podemos usar la herramienta de la línea de comandos...
+Para obtener la información de una base de datos WHOIS podemos usar la herramienta de la línea de comandos o las diversas herramientas online:
 
 ``` bash
 
@@ -108,9 +108,6 @@ https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en
 
 ```
 
- o usando las diversas herramientas online:
-
-![]({{ site.baseurl }}/forestryio/images/whois_1-1.png)
 
 Una herramienta para la línea de comandos en Windows:
 https://download.sysinternals.com/files/WhoIs.zip
