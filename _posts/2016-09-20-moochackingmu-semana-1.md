@@ -110,9 +110,9 @@ https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en
 
  o diversas herramientas online:
 
-![]({{ site.baseurl }}/forestryio/images/2016-09-19 18_25_56-euskalert.net - Archived whois lookup from 2016-06-21 - Whoisology.png)
+![]({{ site.baseurl }}/forestryio/images/whois_1.png)
 
-![]({{ site.baseurl }}/forestryio/images/2016-09-19 18_29_18-EuskalErt.net WHOIS, DNS, & Domain Info - DomainTools.png)
+![]({{ site.baseurl }}/forestryio/images/whois_2.png)
 
 Una herramienta para la línea de comandos en Windows:
 https://download.sysinternals.com/files/WhoIs.zip
