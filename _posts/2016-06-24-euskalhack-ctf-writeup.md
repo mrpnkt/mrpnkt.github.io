@@ -1,6 +1,6 @@
 ---
 title: Euskalhack CTF Writeup
-date: '2016-06-24 21:17:00'
+date: '2016-06-24 00:00:00'
 layout: post
 tags:
 - ctf

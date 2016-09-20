@@ -1,6 +1,6 @@
 ---
 title: 'Writeup Mr-Robot: 1'
-date: '2016-08-09 08:56:00'
+date: '2016-08-09 00:00:00'
 layout: post
 tags: CTF
 ---

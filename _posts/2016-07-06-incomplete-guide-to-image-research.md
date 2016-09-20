@@ -1,11 +1,11 @@
 ---
 title: Pics, Pics, Pics - Incomplete Guide to Image Research
-date: '2016-07-06 05:40:00'
+date: '2016-07-06 00:00:00'
 layout: post
 tags:
-  - osint
-  - research
-  - guide
+- osint
+- research
+- guide
 ---
 "Pics" (Photos, Logos, Icons, Maps) can be of great value in OSINT Investigations. This post is a roundup of resources and tricks. This guide will show you how to search, find, get, scrape, analyze digital images.
 
