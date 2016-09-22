@@ -25,7 +25,7 @@ El banner de telnet muestra como último login:
 
 Filtrando el tráfico telnet y haciendo click secundario sobre un paquete podemos usar la opción `Follow tcp stream` para visualizar el texto en plano de la session:
 
-![]({{ site.baseurl }}/forestryio/images/2016-09-21 14_28_00-.png)
+![](http://i.imgur.com/tg48got.png)
 
 #### ¿Qué usuario y contraseña se ha utilizado para acceder al servidor de Telnet?
 
