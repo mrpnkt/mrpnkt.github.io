@@ -2,6 +2,8 @@
 title: "#moocHackingMU - Semana 2 - Tarea 1"
 date: '2016-09-21 12:09:00'
 layout: post
+tags:
+- moocHackingMU
 ---
 ## TAREA 1: Capturando tráfico con Wireshark
 
