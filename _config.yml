@@ -35,7 +35,7 @@ sass:
 # Author settings
 author:
   name     : "M"
-  job      : "webmaster"
+  job      : "analyst"
   bio      : "…and this is my blog"
   thumb    : /images/author.jpg
   email    : mr@mrpnkt.com
@@ -44,6 +44,7 @@ author:
   twitter  : https://twitter.com/mrpnkt
   facebook : # https://www.facebook.com/profile.php?id=666
   linkedin : https://es.linkedin.com/in/mrpnkt
+  tumblr   : http://mrpnkt.tumblr.com
 
 # social settings
 og_locale: "en_US"
