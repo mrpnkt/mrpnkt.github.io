@@ -128,7 +128,7 @@ $ file Enigma.txt.gpg
 Enigma.txt.gpg: GPG symmetrically encrypted data (CAST5 cipher)
 ```
 
-Descifrar:
+Descifrar*:
 
 ```bash
 $ gpg --output enigma.txt --decrypt Enigma.txt.gpg
@@ -138,6 +138,8 @@ gpg: cifrado con 1 frase contraseña
 gpg: ATENCIÓN: la intgridad del mensaje no está protegida
 
 ```
+
+* [Encrypting and decrypting documents](https://www.gnupg.org/gph/en/manual/x110.html)
 
 Visualizar contenido: 
 
