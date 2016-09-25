@@ -118,20 +118,35 @@ Table: guestbook
 
 [*] shutting down at 00:35:05
 
+```
+
+Para confirmar el típo de archivo:
+
+```bash
 $ file Enigma.txt.gpg
 
 Enigma.txt.gpg: GPG symmetrically encrypted data (CAST5 cipher)
+```
 
+Descifrar:
+
+```bash
 $ gpg --output enigma.txt --decrypt Enigma.txt.gpg
 
 gpg: datos cifrados CAST5
 gpg: cifrado con 1 frase contraseña
 gpg: ATENCIÓN: la intgridad del mensaje no está protegida
 
+```
+
+Visualizar contenido: 
+
+```bash
+
 $ cat enigma.txt
 
 ¡Enhorabuena! Has resuelto el enigma... ya puedes solicitar audiencia con el Consejo Jedi:
 https://www.facebook.com/groups/xxxxxxxxxxxxxxxxxxxxxxx/
 
-```
+``````
 
