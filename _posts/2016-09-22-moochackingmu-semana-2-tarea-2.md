@@ -7,7 +7,7 @@ tags:
 ---
 ## TAREA 2: SQL injection
 
-> En esta tarea vamos a usar la t閏nica SQL injection para obtener informaci髇 relevante sobre la estructura de una base de datos. En concreto, vamos a obtener informaci髇 de usuarios de un servidor (nombre de usuario, hash de la contrase馻) a partir de un ataque de SQL injection.
+> En esta tarea vamos a usar la t茅cnica SQL injection para obtener informaci贸n relevante sobre la estructura de una base de datos. En concreto, vamos a obtener informaci贸n de usuarios de un servidor (nombre de usuario, hash de la contrase帽a) a partir de un ataque de SQL injection.
 
 Descarga: [dvwa.7z](https://www.dropbox.com/s/1km8n8v5gzd6mxq/dvwa.7z?dl=0)
 
@@ -17,7 +17,7 @@ Simplemente metiendo una comilla nos sale un error:
 
 `You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''''' at line 1`
 
-Una buena indicaci髇 de que algo va *mal* y informaci髇 sobre la base de datos en uso (MySQL).
+Una buena indicaci贸n de que algo va *mal* y informaci贸n sobre la base de datos en uso (MySQL).
 
 Si metemos `%' or '0'='0` ` que equivale a `mysql> SELECT first_name, last_name FROM users WHERE user_id = '%' or '0'='0';` en SQL nos sale:
 
@@ -92,7 +92,7 @@ smithy
 5f4dcc3b5aa765d61d8327deb882cf99
 ```
 
-Para facilitar la injecci髇 y automatizar podemos usar la herramienta sqlmap. Primero hay que sacar los cookies para aprovecharnos de la session iniciada:
+Para facilitar la injecci贸n y automatizar podemos usar la herramienta sqlmap. Primero hay que sacar los cookies para aprovecharnos de la session iniciada:
 
 ![](http://i.imgur.com/QiIoQKN.png)
 
