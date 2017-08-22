@@ -83,7 +83,7 @@ display notification "https://www.apple.com" with title "got root" sound name "P
 
 <iframe width="853" height="480" src="https://www.youtube-nocookie.com/embed/hk8Y3LYYXCk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-## Mitigations
+## Mitigation
 
 1. Keep your macos up to date.
 
