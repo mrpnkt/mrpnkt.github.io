@@ -6,8 +6,6 @@ tags:
 - phishing
 - macos
 ---
-
-
 ## Introduction
 
 A few weeks ago I was given peculiar class assignment. I had to “root a Mac”. User interaction allowed. We were given an outdated Virtual Machine with OS X Tiger 10.7.5 installed, so I thought I’d be pretty easy. I was proven wrong very quickly, while doing some basic research.
@@ -81,4 +79,4 @@ display notification "https://www.apple.com" with title "got root" sound name "P
 
 ## Here we go...
 
-<iframe width="100%" height="auto" src="https://www.youtube.com/embed/hk8Y3LYYXCk" frameborder="0" allowfullscreen="" async="" preload=""></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hk8Y3LYYXCk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
