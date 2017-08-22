@@ -81,7 +81,7 @@ display notification "https://www.apple.com" with title "got root" sound name "P
 
 ## Where it all comes together
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hk8Y3LYYXCk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+<iframe width="853" height="480" src="https://www.youtube-nocookie.com/embed/hk8Y3LYYXCk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
 ## Mitigations
 
