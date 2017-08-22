@@ -94,3 +94,4 @@ display notification "https://www.apple.com" with title "got root" sound name "P
 1. Use [additional security software](https://www.objective-see.com/products.html).
 
 1. Don't click on stupid shit.
+
