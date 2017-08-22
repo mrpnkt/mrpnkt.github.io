@@ -94,7 +94,7 @@ display notification "https://www.apple.com" with title "got root" sound name "P
 
 1. Don't use the administrator account for your daily work.
 
-1. Use [additional security software](https://www.objective-see.com/products.html).
+1. Use [additional security software](https://www.objective-see.com/products.html). And [beef up your mac security](https://www.n00py.io/2017/06/securing-a-default-installation-of-macos/)
 
 1. Don't click on stupid shit.
 
