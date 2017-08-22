@@ -4,9 +4,12 @@ layout: post
 tags:
 - phishing
 - macos
-title: Phishing for shells on rotten apples
+title: Phishing for shells on rotten apples - Privilege escalation with AppleScript
 ---
 ## Introduction
+
+### tl;dr
+*I'll explain how I got root on a mac with disabled Gatekeeper and admin account. Nothing new, nothing to worry about. Everything happens in a safe environment and the exploit involved has been fixed by apple. This publication is intended for informational/educational purposes only. Please try at home!*
 
 A few weeks ago I was given peculiar class assignment. I had to “root a Mac”. User interaction allowed. We were given an outdated Virtual Machine with OS X Tiger 10.7.5 installed, so I thought I’d be pretty easy. I was proven wrong very quickly, while doing some basic research.
 
