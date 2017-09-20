@@ -4,6 +4,4 @@ layout: page
 permalink: "/about/"
 ---
 
-mr @ mrpnkt.com
-
-keybase.io/mrpnkt
+[keybase.io/mrpnkt](https://keybase.io/mrpnkt)
