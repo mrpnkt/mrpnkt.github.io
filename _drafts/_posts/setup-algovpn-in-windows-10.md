@@ -8,9 +8,11 @@ tags:
 - algovpn
 - opsec
 ---
-AlgoVPN is a self-hosted personal VPN server designed for ease of deployment and security. Algo automatically deploys an on-demand VPN service in the cloud that is not shared with other users, relies on only modern protocols and ciphers, and includes only the minimal software you need.
 
-Features
+
+[AlgoVPN](https://github.com/trailofbits/algo) is a self-hosted personal VPN server designed for ease of deployment and security. Algo automatically deploys an on-demand VPN service in the cloud that is not shared with other users, relies on only modern protocols and ciphers, and includes only the minimal software you need.
+
+**Features**
 
 * Supports only IKEv2 with strong crypto: AES-GCM, SHA2, and P-256
 
@@ -26,7 +28,7 @@ Features
 
 * Installs to [DigitalOcean](https://m.do.co/c/1d11b814bb23), Amazon EC2, Microsoft Azure, Google Compute Engine, or your own server
 
-Anti-features
+**Anti-features**
 
 * Does not support legacy cipher suites or protocols like L2TP, IKEv1, or RSA
 
@@ -44,7 +46,7 @@ Sounds good? It did to me and so I decided to try it out. Installation on Linux 
 
 ### 1. Get a server:
 
-I chose a DigitalOcean Droplet (1GB RAM/30GB Disk/2TB BW). You may choose a smaller one and it will work just fine. Actually you can [click my referral link](https://m.do.co/c/1d11b814bb23) and get a $10 discount.
+I chose a DigitalOcean Droplet (1GB RAM/30GB Disk/2TB BW). You may choose a smaller one and it will work just fine. Actually you can [click my referral link](https://m.do.co/c/1d11b814bb23) and **get a $10 discount**.
 
 ![]({{ site.baseurl }}/forestryio/images/2017-10-18%2012_18_05-DigitalOcean%20-%20Create%20Droplets%20-%20Opera.png)
 
@@ -57,7 +59,7 @@ Choose an operating system, datacenter location and hostname:
 [Add the ansible repository](http://docs.ansible.com/ansible/latest/intro_installation.html#latest-releases-via-apt-debian) to your sources and update the system.
 
 ```
-apt-get update &amp;amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp;amp; apt-get upgrade --yes
+apt-get update &amp;amp;amp;amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp;amp;amp;amp; apt-get upgrade --yes
 apt-get install ansible git
 git clone https://github.com/trailofbits/algo
 cd algo
@@ -100,4 +102,3 @@ For restricted user accounts you'll have to create an IKEv2 connection manually,
 
 `Set-VpnConnectionIPsecConfiguration -ConnectionName "Algo" -AuthenticationTransformConstants GCMAES128 -CipherTransformConstants GCMAES128 -EncryptionMethod AES128 -IntegrityCheckMethod SHA384 -DHGroup ECP256 -PfsGroup ECP256`
 
-![]({{ site.baseurl }}/forestryio/images/2017-10-23%2017_11_34-Conf.png)
