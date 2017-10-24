@@ -58,8 +58,8 @@ Choose an operating system, datacenter location and hostname:
 
 [Add the ansible repository](http://docs.ansible.com/ansible/latest/intro_installation.html#latest-releases-via-apt-debian) to your sources and update the system.
 
-```
-apt-get update &amp;amp;amp;amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp;amp;amp;amp; apt-get upgrade --yes
+```bash
+apt-get update && apt-get upgrade --yes
 apt-get install ansible git
 git clone https://github.com/trailofbits/algo
 cd algo
@@ -94,7 +94,9 @@ Set Execution-Policy to unrestricted (don't forget to set it back to restricted 
 
 ...and run the following command as Administrator to configure the VPN connection:
 
-`powershell -ExecutionPolicy ByPass -File windows_{username}.ps1 Add`
+````powershell
+powershell -ExecutionPolicy ByPass -File windows_{username}.ps1 Add
+```
 
 ![]({{ site.baseurl }}/forestryio/images/2017-10-18%2013_17_22-Administrador_%20Windows%20PowerShell.png)
 
