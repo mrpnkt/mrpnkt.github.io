@@ -59,6 +59,10 @@ Choose an operating system, datacenter location and hostname:
 [Add the ansible repository](http://docs.ansible.com/ansible/latest/intro_installation.html#latest-releases-via-apt-debian) to your sources and update the system.
 
 ```bash
+apt-get update
+apt-get install -y apt-transport-https ca-certificates
+apt-get install dirmngr
+
 apt-get update && apt-get upgrade --yes
 apt-get install ansible git
 git clone https://github.com/trailofbits/algo
