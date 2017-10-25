@@ -36,7 +36,16 @@ y [quitar los permisos heredados](https://twitter.com/0xAmit/status/922911491694
 
 ![]({{ site.baseurl }}/forestryio/images/2017-10-25%2008_27_58-Windows-1.png)
 
-**Más información:**
+### Recomendaciones:
+
+1. Restringir tareas programadas: viserion_, rhaegal, drogon
+2. Copia de seguridad de datos importantes
+3. Actualizar SO y sistemas de seguridad
+4. Aislar computadoras infectadas
+5. Bloquear direcciones IP y nombres de dominio de [la lista Indicadores](https://otx.alienvault.com/pulse/59f037bd2bda352265e2e6fe/)
+6. Bloquear ventanas emergentes
+
+### Más información:
 
 * <a href="http://www.hackplayers.com/2017/10/badrabbit-que-es-lo-que-hay-que-saber-de-momento.html" style="font-size: 1rem; background-color: rgb(255, 255, 255);">Hackplayers - Qué es lo que hay que saber (de momento) de la nueva amenaza de #ransomware #BadRabbit</a>
 
