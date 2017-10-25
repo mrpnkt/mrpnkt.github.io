@@ -6,13 +6,13 @@ tags:
 - homework
 - physec
 ---
-
-
 Un nuevo ataque de ransomware se está extendiendo como un reguero de pólvora por Europa y ya ha afectado a más de 200 organizaciones importantes, principalmente en Rusia, Ucrania, Turquía y Alemania, en las últimas horas.
 
 ![]({{ site.baseurl }}/forestryio/images/bad_rabbit_ransomware_01.png)
 
 Denominado "Bad Rabbit", se informa que es un nuevo ataque de ransomware específico de Petya contra las redes corporativas, que exige 0.05 bitcoins (~ $ 285) como rescate de las víctimas para desbloquear sus sistemas.
+
+<a href="https://app.any.run/tasks/9198fd01-5898-4db9-8188-6ad2ad4f0af3">![]({{ site.baseurl }}/forestryio/images/interactive.png)</a>
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Video of <a href="https://twitter.com/hashtag/BadRabbit?src=hash&amp;ref_src=twsrc%5Etfw">#BadRabbit</a> in action, from <a href="https://twitter.com/anyrun_app?ref_src=twsrc%5Etfw">@anyrun_app</a> (doesn't show reboot) <a href="https://t.co/3WpTj7f6qE">pic.twitter.com/3WpTj7f6qE</a></p>— Beaumont Porg, Esq. (@GossiTheDog) <a href="https://twitter.com/GossiTheDog/status/922858264534142976?ref_src=twsrc%5Etfw">October 24, 2017</a></blockquote>
 <script type="null"></script>
@@ -44,6 +44,3 @@ y [quitar los permisos heredados](https://twitter.com/0xAmit/status/922911491694
 * [Microsoft: Ransom:Win32/Tibbar.A](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Ransom:Win32/Tibbar.A)
 
 * [roycewilliams/badrabbit-info.txt](https://gist.github.com/roycewilliams/a723aaf8a6ac3ba4f817847610935cfb)
-
-
-
