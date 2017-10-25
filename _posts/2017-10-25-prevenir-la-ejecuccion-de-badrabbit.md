@@ -44,3 +44,5 @@ y [quitar los permisos heredados](https://twitter.com/0xAmit/status/922911491694
 * [Microsoft: Ransom:Win32/Tibbar.A](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Ransom:Win32/Tibbar.A)
 
 * [roycewilliams/badrabbit-info.txt](https://gist.github.com/roycewilliams/a723aaf8a6ac3ba4f817847610935cfb)
+
+&amp;
