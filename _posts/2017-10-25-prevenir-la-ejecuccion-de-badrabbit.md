@@ -5,6 +5,7 @@ layout: post
 tags:
 - ransomware
 - badrabbit
+- killswitch
 ---
 Un nuevo ataque de ransomware se está extendiendo como un reguero de pólvora por Europa y ya ha afectado a más de 200 organizaciones importantes, principalmente en Rusia, Ucrania, Turquía y Alemania, en las últimas horas.
 
