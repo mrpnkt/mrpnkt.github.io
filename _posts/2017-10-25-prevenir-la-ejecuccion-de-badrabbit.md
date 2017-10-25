@@ -3,8 +3,8 @@ title: 'Prevenir la ejecución de #BadRabbit'
 date: 2017-10-25 00:00:00 +0000
 layout: post
 tags:
-- ransomware
-- badrabbit
+- homework
+- physec
 ---
 
 
@@ -21,7 +21,7 @@ De acuerdo con un [análisis inicial proporcionado por Kaspersky](https://secure
 
 ### Prevenir la ejecución del ransomware:
 
-Crear los siguientes ficheros:
+Abrir powershell (Ejecutar como administrador) y crear los siguientes ficheros:
 
 ```
 c:\windows\infpub.dat
@@ -35,10 +35,12 @@ y [quitar los permisos heredados](https://twitter.com/0xAmit/status/922911491694
 
 ![]({{ site.baseurl }}/forestryio/images/2017-10-25%2008_27_58-Windows-1.png)
 
-Más información:
+**Más información:**
 
 * <a href="http://www.hackplayers.com/2017/10/badrabbit-que-es-lo-que-hay-que-saber-de-momento.html" style="font-size: 1rem; background-color: rgb(255, 255, 255);">Hackplayers - Qué es lo que hay que saber (de momento) de la nueva amenaza de #ransomware #BadRabbit</a>
-* <a href="https://www.csoonline.com/article/3234691/security/badrabbit-ransomware-attacks-multiple-media-outlets.html" style="font-size: 1rem; background-color: rgb(255, 255, 255);">BadRabbit ransomware attacks multiple media outlets</a>
-* [Microsoft: Ransom:Win32/Tibbar.A](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Ransom:Win32/Tibbar.A)
-* [roycewilliams/badrabbit-info.txt](https://gist.github.com/roycewilliams/a723aaf8a6ac3ba4f817847610935cfb)
 
+* <a href="https://www.csoonline.com/article/3234691/security/badrabbit-ransomware-attacks-multiple-media-outlets.html" style="font-size: 1rem; background-color: rgb(255, 255, 255);">BadRabbit ransomware attacks multiple media outlets</a>
+
+* [Microsoft: Ransom:Win32/Tibbar.A](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Ransom:Win32/Tibbar.A)
+
+* [roycewilliams/badrabbit-info.txt](https://gist.github.com/roycewilliams/a723aaf8a6ac3ba4f817847610935cfb)
