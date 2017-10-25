@@ -45,4 +45,5 @@ y [quitar los permisos heredados](https://twitter.com/0xAmit/status/922911491694
 
 * [roycewilliams/badrabbit-info.txt](https://gist.github.com/roycewilliams/a723aaf8a6ac3ba4f817847610935cfb)
 
-&amp;
+
+
