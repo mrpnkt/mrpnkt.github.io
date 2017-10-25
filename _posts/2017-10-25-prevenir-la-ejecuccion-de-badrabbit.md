@@ -3,8 +3,8 @@ title: 'Prevenir la ejecución de #BadRabbit'
 date: 2017-10-25 00:00:00 +0000
 layout: post
 tags:
-- homework
-- physec
+- ransomware
+- badrabbit
 ---
 Un nuevo ataque de ransomware se está extendiendo como un reguero de pólvora por Europa y ya ha afectado a más de 200 organizaciones importantes, principalmente en Rusia, Ucrania, Turquía y Alemania, en las últimas horas.
 
