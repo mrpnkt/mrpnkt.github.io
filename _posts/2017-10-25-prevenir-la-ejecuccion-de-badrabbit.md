@@ -14,8 +14,8 @@ Denominado "Bad Rabbit", se informa que es un nuevo ataque de ransomware especí
 
 <a href="https://app.any.run/tasks/9198fd01-5898-4db9-8188-6ad2ad4f0af3">![]({{ site.baseurl }}/forestryio/images/interactive.png)</a>
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Video of <a href="https://twitter.com/hashtag/BadRabbit?src=hash&amp;ref_src=twsrc%5Etfw">#BadRabbit</a> in action, from <a href="https://twitter.com/anyrun_app?ref_src=twsrc%5Etfw">@anyrun_app</a> (doesn't show reboot) <a href="https://t.co/3WpTj7f6qE">pic.twitter.com/3WpTj7f6qE</a></p>— Beaumont Porg, Esq. (@GossiTheDog) <a href="https://twitter.com/GossiTheDog/status/922858264534142976?ref_src=twsrc%5Etfw">October 24, 2017</a></blockquote>
-<script type="null"></script>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Video of <a href="https://twitter.com/hashtag/BadRabbit?src=hash&amp;ref_src=twsrc%5Etfw">#BadRabbit</a> in action, from <a href="https://twitter.com/anyrun_app?ref_src=twsrc%5Etfw">@anyrun_app</a> (doesn&#39;t show reboot) <a href="https://t.co/3WpTj7f6qE">pic.twitter.com/3WpTj7f6qE</a></p>&mdash; Beaumont Porg, Esq. (@GossiTheDog) <a href="https://twitter.com/GossiTheDog/status/922858264534142976?ref_src=twsrc%5Etfw">October 24, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 De acuerdo con un [análisis inicial proporcionado por Kaspersky](https://securelist.com/bad-rabbit-ransomware/82851/), el ransomware se distribuyó mediante ataques de [descarga drive-by](http://www.eset-la.com/centro-amenazas/1792-drive-by-download-infeccion-web), utilizando un instalador falso de reproductores de Adobe Flash para atraer a las víctimas a instalar malware.
 
