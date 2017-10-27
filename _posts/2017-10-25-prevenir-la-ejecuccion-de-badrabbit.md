@@ -19,15 +19,15 @@ De acuerdo con un [análisis inicial proporcionado por Kaspersky](https://secure
 
 ### Prevenir la ejecución del ransomware:
 
-Abrir powershell (Ejecutar como administrador) y crear los siguientes ficheros:
+Ejecutar powershell como administrador:
 
 ```
-c:\windows\infpub.dat
-c:\Windows\cscc.dat
+echo "" > infpub.dat
+echo "" > cscc.dat
+cacls infpub.dat /D everyone
+cacls cscc.dat /D everyone
 
 ```
-
-![]({{ site.baseurl }}/forestryio/images/2017-10-25%2008_29_23-Administrador_%20Windows%20PowerShell.png)
 
 y [quitar los permisos heredados](https://twitter.com/0xAmit/status/922911491694694401):
 
