@@ -199,7 +199,7 @@ Got a somewhat useless(?) admin panel:
 
 I also had some problems spawning a reverse shell, because it immediately died. Finally this little trick did it:
 
-`pwd &amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp; ./revcat &amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp; sleep 10s`
+`pwd && ./revcat && sleep 10s`
 
 From a metasploit meterpreter shell (that's just what I'm used too), the following gave me a tty:
 
