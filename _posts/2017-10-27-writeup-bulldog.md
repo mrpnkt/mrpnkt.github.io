@@ -188,7 +188,7 @@ https://autohotkey.com/board/topic/108950-pbkdf2-makes-passwords-harder-to-crack
 I decided to take a shortcut, change the admin password and serve the modified database from the attacking machine:
 
 ```
-sqlite3 db.sqlite3 &amp;amp;amp;amp;amp;lt; output.sql
+sqlite3 db.sqlite3 < output.sql
 python -m SimpleHTTPServer 80
 
 ```
