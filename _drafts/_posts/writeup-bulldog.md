@@ -1,5 +1,5 @@
 ---
-title: Writeup Bulldog
+title: Writeup Bulldog 1
 date: 2017-10-27 00:00:00 +0000
 layout: post
 tags:
@@ -7,8 +7,6 @@ tags:
 - writeup
 - vulnhub
 ---
-
-
 Since I was somewhat bored and hadn't done a vulnerable machine for quite some time I had a look at [vulnhub](https://www.vulnhub.com/) and saw a new machine:
 
 **Bulldog: 1 - [Info & Download](https://www.vulnhub.com/entry/bulldog-1,211/)**
@@ -142,9 +140,52 @@ A secret key :o in settings.py:
 
 ```
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%9a3ph3iwk$v*_#x4ejg8(t5(qll0fl8q8&amp;u+o_g$yi83d*riq'
+SECRET_KEY = '%9a3ph3iwk$v*_#x4ejg8(t5(qll0fl8q8&amp;amp;u+o_g$yi83d*riq'
 
 ```
 
-and a database (db.sqlite3), which I copied to /static/js to download and dumped the contents:
+and a database (db.sqlite3), which I copied to /static/js to download and [dumped](https://stackoverflow.com/questions/75675/how-do-i-dump-the-data-of-some-sqlite3-tables) the contents:
+
+```
+sqlite3 db.sqlite3 .dump | grep '^INSERT'
+
+[snip]
+
+CREATE TABLE IF NOT EXISTS "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "is_superuser" bool NOT NULL, "username" varchar(30) NOT NULL UNIQUE, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "last_login" datetime NULL);
+INSERT INTO auth_user VALUES(1,'pbkdf2_sha256$20000$9k0TYJltYWk5$rE0aQA4DGFxEjBhBH0BEJhFsF2Jx63690a8VGE/9a+c=',1,'admin','','','admin@bulldogindustries.com',1,1,'2017-08-18 22:42:27.888865','2017-08-19 06:14:22.419010');
+INSERT INTO auth_user VALUES(3,'pbkdf2_sha256$20000$AvMG3SPMFdWk$br74kiJcinPLKkqG+i9G+2MavMVW9IXDl2TSeQ5My+A=',0,'alan','','','',1,1,'2017-08-19 05:57:32',NULL);
+INSERT INTO auth_user VALUES(4,'pbkdf2_sha256$20000$LgCCwZ1qFhSK$xv2NHkto76GEp11lXNUFPsiolvoV8c8R/PRl2/XccX0=',0,'william','','','',1,1,'2017-08-19 06:02:07',NULL);
+INSERT INTO auth_user VALUES(5,'pbkdf2_sha256$20000$IjvfpwWo8tw9$9PZgYsZCcRz3dLVU/4TnXa9i2VcybBnBedCyNjk3Sak=',0,'malik','','','',1,1,'2017-08-19 06:02:50',NULL);
+INSERT INTO auth_user VALUES(6,'pbkdf2_sha256$20000$ooicdWHyxlTk$oNMBAZDKarihoPIzzYAhDq+4cR8JtJGt9JQIA8q1SX8=',0,'kevin','','','',1,1,'2017-08-19 06:03:22',NULL);
+INSERT INTO auth_user VALUES(7,'pbkdf2_sha256$20000$nmdkvhu3yqa9$8VSo44h9fXYj6FLavolYDZ7P5PhFBLeKBmLkBlNpGTk=',0,'ashley','','','',1,1,'2017-08-19 06:04:18',NULL);
+INSERT INTO auth_user VALUES(8,'pbkdf2_sha256$20000$Cto2iGhTaD7o$BrQ4VQiA/gK3pMtijCDT30k7m0opyDrwjlOiEmAmtIc=',0,'nick','','','',1,1,'2017-08-19 06:06:08','2017-10-24 21:25:02.575798');
+INSERT INTO auth_user VALUES(9,'pbkdf2_sha256$20000$lA6iOt4XGXLw$0VHpbYjNiFN4CnHisuB+bFh72A6sn03Q+d34Laj7jkM=',0,'sarah','','','',1,1,'2017-08-19 06:06:56',NULL);
+CREATE TABLE IF NOT EXISTS "django_session" ("session_key" varchar(40) NOT NULL PRIMARY KEY, "session_data" text NOT NULL, "expire_date" datetime NOT NULL);
+INSERT INTO django_session VALUES('7c9ks1ywspnb2mu500z63zp178eo1zrh','YjcyYTMwNzY4Mzk2MTFmMmQyYmE1MGZhMzA2MzNmYjdiODA3NGEwMDp7Il9hdXRoX3VzZXJfaGFzaCI6IjliMThhNzgyNjI4YjEzZDFhY2E4YjAwMjA3MTIwMWUxODUzNjMyMTIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiI4In0=','2017-09-02 06:37:06.605011');
+INSERT INTO django_session VALUES('exuboafi4l2garfjmb92z041pspfodtl','YjcyYTMwNzY4Mzk2MTFmMmQyYmE1MGZhMzA2MzNmYjdiODA3NGEwMDp7Il9hdXRoX3VzZXJfaGFzaCI6IjliMThhNzgyNjI4YjEzZDFhY2E4YjAwMjA3MTIwMWUxODUzNjMyMTIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiI4In0=','2017-09-09 02:48:23.352017');
+INSERT INTO django_session VALUES('7toi97v6ux7duk4o9mzu7v34oiwhlexs','YjcyYTMwNzY4Mzk2MTFmMmQyYmE1MGZhMzA2MzNmYjdiODA3NGEwMDp7Il9hdXRoX3VzZXJfaGFzaCI6IjliMThhNzgyNjI4YjEzZDFhY2E4YjAwMjA3MTIwMWUxODUzNjMyMTIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiI4In0=','2017-09-11 22:37:35.697643');
+INSERT INTO django_session VALUES('kknxoaa81vj29zqbumpnwky2eymbwpnq','YjcyYTMwNzY4Mzk2MTFmMmQyYmE1MGZhMzA2MzNmYjdiODA3NGEwMDp7Il9hdXRoX3VzZXJfaGFzaCI6IjliMThhNzgyNjI4YjEzZDFhY2E4YjAwMjA3MTIwMWUxODUzNjMyMTIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiI4In0=','2017-11-07 16:47:19.297983');
+[snip]
+
+```
+
+Session keys and salted/hashed passwords including the one for the admin user.
+
+I lost some time messing with hashcat trying to find a way to bruteforce. Turns out, that's not as easy as I thought. Here are some links as a reference if you want to try:
+
+```
+https://www.djangoproject.com/weblog/2013/sep/15/security/
+https://blog.codinghorror.com/hacker-hack-thyself/
+https://github.com/xros/py_django_crack
+http://passlib.readthedocs.io/en/stable/lib/passlib.hash.django_std.html
+https://crypto.stackexchange.com/questions/18173/how-long-does-it-take-to-crack-pbkdf2
+https://autohotkey.com/board/topic/108950-pbkdf2-makes-passwords-harder-to-crack/
+```
+
+I decided to take a shortcut, change the admin password and serve the modified database from the attacking machine:
+
+```
+sqlite3 db.sqlite3 < output.sql
+python -m SimpleHTTPServer 80
+```
 
