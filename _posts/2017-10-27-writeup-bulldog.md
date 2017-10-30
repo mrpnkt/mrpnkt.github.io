@@ -142,7 +142,7 @@ A secret key :o in settings.py:
 
 ```
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%9a3ph3iwk$v*_#x4ejg8(t5(qll0fl8q8&amp;amp;amp;amp;amp;amp;amp;amp;u+o_g$yi83d*riq'
+SECRET_KEY = '%9a3ph3iwk$v*_#x4ejg8(t5(qll0fl8q8&u+o_g$yi83d*riq'
 
 ```
 
