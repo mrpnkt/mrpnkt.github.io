@@ -127,6 +127,8 @@ El mejor recurso sin embargo es la investigación propia, hacer apuntes sobre to
 
 Suelo usar el software [CherryTree](http://www.giuspen.com/cherrytree/), para estructurar los apuntes y tenerlos a mano de una forma ordenada que facilita la búsqueda. Otra opción es [TiddlyWiki](http://tiddlywiki.com), una mezcla de cuaderno y wiki y cuaderno personal.
 
+![CherryTree](https://i.imgur.com/Ps38AHu.png)
+
 Recomiendo hacer copias de respaldo de los archivos descargados, snapshots de máquinas virtuales e incluso archivar las páginas web [antes de que desaparezcan](http://archive.is/).
 
 #### Seguridad operacional
@@ -141,7 +143,9 @@ Mantén [limpio, actualizado y seguro tu sistema operativo](https://decentsecuri
 
 Después de echar un vistazo a troyanos programados en otros idiomas decidí quedarme con Python, contrario a Java, Visual Basic o C# me resulta más fácil comprender lo que hace cada línea de código. Además, no iba a perder el tiempo reinventando la rueda del concepto cliente servidor (que por cierto está [muy bien explicado aquí](https://www.fwhibbit.es/python-hacking-simple-cliente-servidor) y [también aquí](http://www.semecayounexploit.com/?sec=python&nota=19)) y me encontré con un excelente ejemplo en github:
 
-[Ares - Python botnet and backdoor](https://github.com/sweetsoftware/Ares) de [sweetsoftware](https://github.com/sweetsoftware) es ligero, modular e independiente de plataforma. Perfecto para destriparlo como ejemplo.
+![](https://i.imgur.com/9txG0bl.png)
+
+[Ares - Python botnet and backdoor](https://github.com/sweetsoftware/Ares) de [sweetsoftware](https://github.com/sweetsoftware) es ~~ligero~~, modular e independiente de plataforma. Perfecto para destriparlo como ejemplo.
 
 #### Preparación del laboratorio
 
