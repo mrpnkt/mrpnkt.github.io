@@ -115,7 +115,7 @@ Se puede perder mucho tiempo en la búsqueda de herramientas que a primera vista
 
 * [Megapack Modding Tools de fudmario](http://www.sniferl4bs.com/2014/02/conociendo-sobre-malware-vi-mega-pack.html)
 
-* FLM Antinub (Encoder/Decoder Pack)`hxxp://www.connect-trojan\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\[DOT\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\]net/2016/01/flm-antinub-v1.0-tools-encoder-and-decoder.html` _(¡Cuidado con esta página!)_
+* FLM Antinub (Encoder/Decoder Pack) `hxxp://www.connect-trojan DOT net/2016/01/flm-antinub-v1.0-tools-encoder-and-decoder.html` _(¡Cuidado con esta página!)
 
 * [Microsoft Sysinternals Suite](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite)
 
@@ -126,8 +126,6 @@ Se puede perder mucho tiempo en la búsqueda de herramientas que a primera vista
 El mejor recurso sin embargo es la investigación propia, hacer apuntes sobre todo que uno vaya encontrando y la experimentación.
 
 Suelo usar el software [CherryTree](http://www.giuspen.com/cherrytree/), para estructurar los apuntes y tenerlos a mano de una forma ordenada que facilita la búsqueda. Otra opción es [TiddlyWiki](http://tiddlywiki.com), una mezcla de cuaderno y wiki y cuaderno personal.
-
-![CherryTree](%7B%7B%20site.baseurl%20%7D%7D/forestryio/images/CherryTree0.38.2.png)
 
 Recomiendo hacer copias de respaldo de los archivos descargados, snapshots de máquinas virtuales e incluso archivar las páginas web [antes de que desaparezcan](http://archive.is/).
 
