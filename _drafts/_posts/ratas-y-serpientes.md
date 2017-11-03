@@ -145,7 +145,7 @@ Después de echar un vistazo a troyanos programados en otros idiomas decidí que
 
 ![](https://i.imgur.com/9txG0bl.png)
 
-[Ares - Python botnet and backdoor](https://github.com/sweetsoftware/Ares) de [sweetsoftware](https://github.com/sweetsoftware) es ~~ligero~~, modular e independiente de plataforma. Perfecto para destriparlo como ejemplo.
+[Ares - Python botnet and backdoor](https://github.com/sweetsoftware/Ares) de [sweetsoftware](https://github.com/sweetsoftware), modular e independiente de plataforma. Perfecto para destriparlo como ejemplo.
 
 #### Preparación del laboratorio
 
