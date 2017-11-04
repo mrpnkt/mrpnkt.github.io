@@ -20,9 +20,7 @@ En los foros underground hay un montón de tutoriales sobre cómo crear troyanos
 
 Está claro que el punto en común que tienen todos los RATs es que deben ser funcionales e indetectables por los productos antivirus, pero hay muchos matices y preferencias, hay mercado y hay mentes libres, se juntan ignorantes y novatos, gente con ganas de aprender y gente capaz de crear auténticas maravillas de crimeware para los fines que crean convenientes. Un mundo de mercado, de crimen organizado, y de estados opresores, pero también de la anarquía, del aprendizaje y del desafío a la autoridad.
 
-Recomiendo leer diferentes artículos de análisis de malware para aprender sobre los distintos mecanismos de evasión de antivirus, de propagación y de persistencia. Me encanta leer los artículos sobre malware que se [burlan](https://twitter.com/zerosum0x0/status/925486850399019009) de manera inteligente e incluso graciosa de los productos de las grandes empresas, pero…
-
-**¿Qué mejor manera de aprender sobre algo que creándolo uno mismo?**
+Recomiendo leer [artículos](https://www.endgame.com/blog/technical-blog/badrabbit-technical-analysis) [de](https://securelist.com/blackoasis-apt-and-new-targeted-attacks-leveraging-zero-day-exploit/82732/) [análisis](https://www.malwaretech.com/2016/02/necursp2p-hybrid-peer-to-peer-necurs.html) [de](https://securelist.com/blackoasis-apt-and-new-targeted-attacks-leveraging-zero-day-exploit/82732/) [malware](http://www.pwc.co.uk/issues/cyber-security-data-privacy/research/the-keyboys-are-back-in-town.html) para aprender sobre los distintos mecanismos de evasión de antivirus, de [propagación](https://www.malwaretech.com/2016/05/dridex-updates-payload-distribution.html) y de [persistencia](https://blog.malwarebytes.com/threat-analysis/2016/07/untangling-kovter/). Me encanta leer, pero… **¿qué mejor manera de aprender sobre algo que creándolo uno mismo?**
 
 ### Recursos
 
@@ -115,6 +113,8 @@ Para investigar malware es conveniente crear un laboratorio de máquinas virtual
 #### Herramientas
 
 Se puede perder mucho tiempo en la búsqueda de herramientas que a primera vista parecen imprescindibles. No lo son y casi siempre hay [una alternativa](https://www.alternativeto.net), pero dejo aquí unos recursos que al principio cuesta encontrar (un consejo: [apunta las contraseñas](https://keepassxc.org)) de los archivos comprimidos):
+
+* [malwareanalysis.tools](http://malwareanalysis.tools/) 
 
 * [Megapack Modding Tools de fudmario](http://www.sniferl4bs.com/2014/02/conociendo-sobre-malware-vi-mega-pack.html)
 
