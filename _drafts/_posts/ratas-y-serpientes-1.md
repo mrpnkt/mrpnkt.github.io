@@ -1,12 +1,12 @@
 ---
 title: RATas y serpientes (Parte I)
-date: 2017-11-03 00:00:00 +0000
+date: 2017-11-04 19:24:06 +0100
 layout: post
 tags:
 - python
 - malware
 ---
-## Un viaje por las alcantarillas de la red
+## Un viaje por las alcantarillas
 
 Como parte de los estudios de un curso en el cual nos pedían crear un crypter y un troyano, me he dado un paseo por las alcantarillas de la red. No soy programador y nunca me interesó demasiado el tema de la “administración remota sin consentimiento del cliente” (por llamarlo de alguna forma políticamente correcta).
 
