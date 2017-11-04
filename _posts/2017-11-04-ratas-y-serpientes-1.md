@@ -587,7 +587,7 @@ function download_execute(e) {
 
 En la segunda parte daré otra vuelta a Antiope y me centraré en stagers, binders y en la falsificación de firmas.
 
-Mientras dejo más material para aprender sobre Python-reversing y Python malware:
+Mientras, dejo más material para aprender sobre el lado oscuro de python:
 
 * [Pyherion (Veil 2)](https://www.veil-framework.com/pyherion/)
 
@@ -604,5 +604,8 @@ Mientras dejo más material para aprender sobre Python-reversing y Python malwar
 * [pyREtic](https://github.com/MyNameIsMeerkat/pyREtic) - Framework for in-memory Python bytecode reverse engineering
 
 * [Backdoor 100% indetectable con HanzoInjection ](https://www.fwhibbit.es/backdoor-100-indetectable-con-hanzoinjection)
+
+&nbsp;
+_El Castellano no es mi Lengua materna, así que pido disculpas por todos errores gramaticales y ortográficos cometidos!_
 
 &nbsp;
