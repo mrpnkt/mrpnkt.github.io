@@ -58,7 +58,7 @@ En el blog de Security by Default hay una serie de excelentes artículos de intr
 
 Recomiendo leer también los comentarios, ya que en los hilos se plantean algunas cuestiones interesantes.
 
-Videos de ponencias que profundizan sobre la evasión de antivirus:
+Videos que profundizan sobre la evasión de antivirus:
 
 * [The Art of Evading Antivirus](https://www.youtube.com/watch?v=XdfF5swMvrg)
 
