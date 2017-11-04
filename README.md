@@ -1,3 +1,3 @@
-# mrpnkt.github.io alpha
+# mrpnkt.github.io
 
-### just testing
+### just a blog
