@@ -578,6 +578,8 @@ function download_execute(e) {
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; margin-bottom: 20px; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/undefined' frameborder='0' allowfullscreen></iframe></div>
 
+&nbsp;
+
 ¡Voila! Un malware funcional y casi indetectable (hay que tener en cuenta que lo hice con fines educativos; publicando el código y subiendo los samples a virustotal).
 
 En la segunda parte daré otra vuelta a Antiope y me centraré en stagers, binders y en la falsificación de firmas.
