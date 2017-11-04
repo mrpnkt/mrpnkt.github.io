@@ -3,8 +3,8 @@ title: RATas y serpientes
 date: 2017-11-03 00:00:00 +0000
 layout: post
 tags:
-- homework
-- physec
+- python
+- malware
 ---
 ## Un viaje por las alcantarillas de la red
 
@@ -126,7 +126,7 @@ El mejor recurso sin embargo es la investigación propia, hacer apuntes sobre to
 
 Suelo usar el software [CherryTree](http://www.giuspen.com/cherrytree/), para estructurar los apuntes y tenerlos a mano de una forma ordenada que facilita la búsqueda. Otra opción es [TiddlyWiki](http://tiddlywiki.com), una mezcla de cuaderno y wiki y cuaderno personal.
 
-![CherryTree](https://i.imgur.com/Ps38AHu.png)
+![]({{ site.baseurl }}/forestryio/images/CherryTree0.38.2-1.png)
 
 Recomiendo hacer copias de respaldo de los archivos descargados, snapshots de máquinas virtuales e incluso archivar las páginas web [antes de que desaparezcan](http://archive.is/).
 
@@ -163,3 +163,19 @@ Ares viene en dos partes:
 Tanto para agente como para el servidor hay un fichero de configuración `agent/settings.py y server/conf/server.conf` donde se definen bot-ids, puertos y opciones de debugging entre otras.
 
 El server se arranca con un python server.py desde la consola:
+
+`pyinstaller --onefile --noconsole agent.py`
+
+Se crea un archivo inflado de casi 9 MB, que es bastante para las pocas funciones que lleva lamenta un usuario del foro underc0de:
+
+Pasando el ejecutable por Virustotal nos podemos dar cuenta de que es [detectado por 20 de 67 productos](https://www.virustotal.com/#/file/477ccacf8455563a8f5ae700fdc88a39331b8823639a8c4509ce9871148a72ed/detection), aunque eso no es mucho y algunos importantes ni siquiera lo detectan (cuando lleva años como código abierto en github y no fue actualizado desde junio 2016). A primera vista es cierto y deja bastante que desear, pero vamos viendo si se pueden mejorar algunos aspectos creando a…
+
+#### Antiope, la hija
+
+De una cierta admiración por cómo está hecho Ares nace la idea de crearle una hija – Antiope. Más ligera y menos detectable, más bonita, pero también menos madura. No es ni producto, ni arma, solo un un experimento para aprender sobre malware.
+
+Primero pondré a Antiope bajo régimen.  La idea es quitarle todos los módulos, el debugging y la ayuda integrada.
+
+Compruebo si lo de [upx](https://upx.github.io/) es cierto y no lo es. Sí se puede comprimir con upx y reducir el tamaño del fichero de 7.6 MBs, aunque el comprimido lo hace más sospechoso para [21 de 67](https://www.virustotal.com/#/file/bd0aa68aa9f74ae2a1c3ea7e7684868ba52f01b717b3262234611a245fab6474/detection) productos:
+
+Vamos a probarlo otra vez, esta vez usando el módulo PyCrypto de python (https://pypi.python.org/pypi/pycrypto/). No esperamos grandes resultados, ya que encriptar el malware tiene sus desventajas (https://youtu.be/XpcJ9Jd4Ud0?t=43m53s):
