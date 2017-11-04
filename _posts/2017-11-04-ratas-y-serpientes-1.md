@@ -561,7 +561,7 @@ HTML:
 
 JavaScript:
 
-```Javascript
+```javascript
 
 function download_execute(e) {
     $.post("../api/push", {
