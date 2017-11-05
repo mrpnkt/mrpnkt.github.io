@@ -583,14 +583,14 @@ function download_execute(e) {
 
 &nbsp;
 
-¡Voila! Un malware funcional y casi indetectable (hay que tener en cuenta que lo hice con fines educativos; publicando el código y subiendo los samples a virustotal). Por supuesto hay que decir que malware en Python tiene ciertas desventajas: El ejecutable tiene que llevar todas las dependencias y por eso se infla hasta los 10MB que es mucho para la poca funcionalidad que tiene. La programación en Windows es tediosa. Claro que un malware hecho en ASM deja menos huella en el sistema y por su pequeño fingerprint es más difícil de detectar. Los foros están llenos de consejos sobre como programar troyanos en C, C# y Visual Basic o AutoIt, pero Python esta muy bien documentado, funciona tanto en Mac, como en Linux e Windows. El CnC de antiope puede correr en un Windows 10 o en un servidor linux con recursos minimos. Python es facil de entender y aprender. Es perfectamente integrable en un framework como metasploit. Tools como Pyherion, Veil y similares marcan el camino.
+¡Voila! Un malware funcional y casi indetectable (hay que tener en cuenta que lo hice con fines educativos; publicando el código y subiendo los samples a virustotal). Por supuesto hay que decir que malware en Python tiene ciertas desventajas: El ejecutable tiene que llevar todas las dependencias y por eso se infla hasta los 10MB que es mucho para la poca funcionalidad que tiene. La programación en Windows es tediosa.
+
+Claro que un malware hecho en ASM deja menos huella en el sistema y por su pequeño fingerprint es más difícil de detectar. Los foros están llenos de consejos sobre como programar troyanos en C, C# y Visual Basic o AutoIt, pero Python esta muy bien documentado, funciona tanto en Mac, como en Linux e Windows. El CnC de antiope puede correr en un Windows 10 o en un servidor linux con recursos minimos. Python es facil de entender y aprender. Es perfectamente integrable en un framework como metasploit. Tools como [Pyherion](https://www.veil-framework.com/pyherion/), Veil y similares marcan el camino.
 
 En la segunda parte daré otra vuelta a Antiope y me centraré en stagers, binders, y en la falsificación de firmas.
 La tercera parte ira enfocando a camuflar la presencia y conseguir la persistencia en el sistema. 
 
 Mientras, dejo más material para aprender sobre el lado oscuro de python:
-
-* [Pyherion (Veil 2)](https://www.veil-framework.com/pyherion/)
 
 * [Python v. AV](https://www.scribd.com/document/359546080/ViolentPython-DEFCON-2014-pdf)
 
@@ -604,7 +604,7 @@ Mientras, dejo más material para aprender sobre el lado oscuro de python:
 
 * [pyREtic](https://github.com/MyNameIsMeerkat/pyREtic) - Framework for in-memory Python bytecode reverse engineering
 
-* [Backdoor 100% indetectable con HanzoInjection ](https://www.fwhibbit.es/backdoor-100-indetectable-con-hanzoinjection)
+* [Backdoor 100% indetectable con HanzoInjection](https://www.fwhibbit.es/backdoor-100-indetectable-con-hanzoinjection)
 
 &nbsp;
 _El Castellano no es mi Lengua materna, así que pido disculpas por todos errores gramaticales y ortográficos cometidos!_
