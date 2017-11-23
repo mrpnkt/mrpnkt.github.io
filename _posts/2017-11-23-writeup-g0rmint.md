@@ -29,7 +29,7 @@ After finding the right IP and doing an nmap scan (open ports: http on 80 and ss
 
 A little research showed that g0rmint (gormint=government) is somehow related to a video of a rambling granny that went viral in Pakistan:
 
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/qTGXxdsDFfg' frameborder='0' allowfullscreen></iframe></div>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container' style='margin-bottom:1em'><iframe src='https://www.youtube.com/embed/qTGXxdsDFfg' frameborder='0' allowfullscreen></iframe></div>
 
 &nbsp;
 
