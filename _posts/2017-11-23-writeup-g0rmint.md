@@ -6,7 +6,7 @@ tags:
 - vulnhub
 - writeup
 ---
-This one took me almost a week to finish, the desperate search for one archive took me 2 days and I struggled to find a necessary username which was sitting right in front my eyes all the time. As always it comes down to one key takeaway: [Enumeration is the key](https://twitter.com/NomanRiffat/status/932606470910246912).
+This one took me almost a week to finish. The desperate search for one archive took me 2 days and I struggled to find a necessary username which was sitting right in front my eyes all the time. As always it comes down to one key takeaway: [Enumeration is the key](https://twitter.com/NomanRiffat/status/932606470910246912).
 
 Vulnerable Machine: [**g0rmint: 1, 3 Nov 2017**](https://www.vulnhub.com/entry/g0rmint-1,214/)
 
