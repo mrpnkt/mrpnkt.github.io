@@ -31,6 +31,8 @@ A little research showed that g0rmint (gormint=government) is somehow related to
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/qTGXxdsDFfg' frameborder='0' allowfullscreen></iframe></div>
 
+&nbsp;
+
 At first the login.php didn't reveal anything to me, so I went on to list accessible files and directories:
 
 ![]({{ site.baseurl }}/forestryio/images/2017-11-18 15_36_35.png)
