@@ -40,13 +40,13 @@ _“A diferencia de otras billeteras, **la billetera Bitfi no se puede alterar**
 
 ![]({{ site.baseurl }}/forestryio/images/2018-08-25 13_08_48-John McAfee on Twitter_ _For all you naysayers who claim that “nothing is unhack.png)
 
-https://twitter.com/officialmcafee/status/1021805449681817600
+[https://twitter.com/officialmcafee/status/1021805449681817600](https://twitter.com/officialmcafee/status/1021805449681817600)
 
 En dos ocasiones McAfee y la empresa de Bitfi retaron a investigadores de todo el mundo ofreciendo bounties (recompensas para aquellas personas que detectaran fallos graves de seguridad). En [un tweet McAfee](https://twitter.com/officialmcafee/status/1021805449681817600) ofreció $100.000 para aquel que consiguiese hackear el dispositivo. [Tardaron una semana en conseguir acceso completo al sistema](https://twitter.com/OverSoftNL/status/1024684201575108615) (root access).
 
 ![]({{ site.baseurl }}/forestryio/images/2018-08-25 13_14_24-John McAfee on Twitter_ _The $100,000 bounty to anyone who can hack the https___.png)
 
-https://twitter.com/officialmcafee/status/1022891967175376897
+[https://twitter.com/officialmcafee/status/1022891967175376897](https://twitter.com/officialmcafee/status/1022891967175376897)
 
 El fabricante Bitfi [aumentó la apuesta a $250.000](https://bitfi.com/bounty) en algo que parece ser más un truco de marketing que un bug bounty en condiciones. Aunque el alcance del reto es realmente pequeño y poco realista, siguieron con más hackeos:
 
@@ -66,7 +66,7 @@ Vamos a desmontar unas cuantas de las afirmaciones sobre el dispositvo:
 
 ![]({{ site.baseurl }}/forestryio/images/2018-08-25 13_18_45-Burstup on Twitter_ _@Bitfi6 I received the Bitfi device in a box that was rippe.png)
 
-https://twitter.com/Burstup/status/1023921887947177984
+[https://twitter.com/Burstup/status/1023921887947177984](https://twitter.com/Burstup/status/1023921887947177984)
 
 En referencia a la afirmación de Bitfi sobre que su dispositivo es “inalterable” y no posee memoria, los investigadores de Pentest Partners encontraron un [chip con memoria no volátil](https://www.pentestpartners.com/security-blog/unhackable-bitfi-crypto-wallet-whats-all-the-fuss-about/). El firmware no está firmado y como bien [dice @cybergibbons](https://twitter.com/cybergibbons/status/1028407576134856704): _“No se debería poder instalar y ejecutar código arbitrario en un dispositivo seguro sin reemplazar el hardware.”_ Cosa que sí se puede hacer en un Bitfi.
 
@@ -90,7 +90,7 @@ Sin embargo, resulta que la mente es un lugar sorprendentemente vulnerable para 
 
 ![]({{ site.baseurl }}/forestryio/images/2018-08-25 13_26_44-We are open source and all these - Twitter Search.png)
 
-https://twitter.com/Bitfi6/status/1024525615666548737
+[https://twitter.com/Bitfi6/status/1024525615666548737](https://twitter.com/Bitfi6/status/1024525615666548737)
 
 En un primer momento Bitfi afirmaba que “_si alguna vez se pierde un dispositivo o incluso si Bitfi ya no está en el negocio, puede recuperar fácilmente sus fondos utilizando nuestro código de código abierto._” Aunque más tarde han aflojado sus declaraciones e incluso han [editado la declaración](https://twitter.com/omer_crypto/status/1023222622623084544) de su página web. Lo único “abierto” que hemos podido encontrar ha sido [este whitepaper](https://docs.wixstatic.com/ugd/9e18eb_6d75d420deeb46f0a31493fde61319df.pdf) en el cual explican algunos conceptos básicos del algoritmo usado.
 
