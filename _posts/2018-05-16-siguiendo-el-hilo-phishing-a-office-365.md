@@ -1,3 +1,14 @@
+---
+title: Siguiendo El Hilo Phishing A Office 365
+date: '2018-05-16 00:00:00'
+categories: []
+layout: post
+slug: siguiendo-el-hilo-phishing-a-office-365
+tags:
+- phishing
+- o365
+---
+
 Últimamente, se han visto muchos intentos de ataques de ingeniería social a cuentas de Office 365. Tanto el Phishing como el Spearphishing, están más vivos que nunca.
 
 De acuerdo con el informe [Fraud Beat de Easy Solutions](https://www.easysol.net/eng/press-releases/easy-solutions-offers-new-fraud-beat-2017), el **97% de las personas no puede reconocer con precisión un email de phishing** y cerca del 30% de estos emails son abiertos por sus destinatarios. Teniendo en cuenta estos indicadores, los creadores de estos ataques tienen serios incentivos para continuar con sus actividades delictivas.
