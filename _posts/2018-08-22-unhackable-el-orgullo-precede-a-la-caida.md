@@ -70,7 +70,7 @@ Vamos a desmontar unas cuantas de las afirmaciones sobre el dispositvo:
 
 En referencia a la afirmación de Bitfi sobre que su dispositivo es “inalterable” y no posee memoria, los investigadores de Pentest Partners encontraron un [chip con memoria no volátil](https://www.pentestpartners.com/security-blog/unhackable-bitfi-crypto-wallet-whats-all-the-fuss-about/). El firmware no está firmado y como bien [dice @cybergibbons](https://twitter.com/cybergibbons/status/1028407576134856704): _“No se debería poder instalar y ejecutar código arbitrario en un dispositivo seguro sin reemplazar el hardware.”_ Cosa que sí se puede hacer en un Bitfi.
 
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/bEzFm0WzSqI' frameborder='0' allowfullscreen></iframe></div>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container' style='margin-bottom:1em'><iframe src='https://www.youtube.com/embed/bEzFm0WzSqI' frameborder='0' allowfullscreen></iframe></div>
 
 ### Afirmación 2 “No hay software en el dispositivo ni memoria.” (McAfee)
 
