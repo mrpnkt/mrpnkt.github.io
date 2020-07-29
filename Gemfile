@@ -10,4 +10,7 @@ group :development do
   gem 'sass', '~> 3.4', '>= 3.4.20'
   gem 'bourbon', '~> 4.2', '>= 4.2.6'
   gem 'pygments.rb', '~> 0.6.3'
+  gem "json", ">= 2.3.0"
+
+
 end
