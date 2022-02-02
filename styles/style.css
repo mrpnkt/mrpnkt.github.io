@@ -1,0 +1,594 @@
+@import url("./colors.css");
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("./Hack.ttf");
+}
+
+:root {
+  --font: "Roboto Mono";
+  /* --background: var(--background); */
+  /* --foreground: #fffffe; */
+  /* --pink: #e53170; */
+  /* --red: #f25f4c; */
+  /* --orange: #ff8906; */
+  /* --branch: 1px solid #a7a9be; */
+  --branch: 1px solid var(--color12);
+}
+
+/* ====================================================== */
+/* ===================== Animations ===================== */
+/* ====================================================== */
+
+/* ~~~~~~~~~~~~~ hover interactions ~~~~~~~~~~~~ */
+
+.bookmark-link-edit-button,
+.category-name-edit-button,
+.search-bar-edit-button {
+  visibility: hidden;
+  justify-content: left;
+}
+
+.bookmark-link:hover ~ .bookmark-link-edit-button,
+.category-title:hover ~ .category-name-edit-button {
+  visibility: visible;
+}
+
+.search-bar-title > .text-content:hover ~ .button {
+  visibility: visible;
+}
+
+.search-bar-title {
+  cursor: pointer;
+}
+
+.dropzone > a,
+.dropzone > h1 {
+  cursor: move;
+}
+
+/* ~~~~~~~~~~ button animations ~~~~~~~~~~ */
+
+@keyframes shake-hover {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes infinite-rotate-hover {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-forward-90 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate-back-90 {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button {
+  animation: visible-animate 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.link-button.active {
+  animation-fill-mode: forwards !important;
+  animation: rotate-forward-90 0.2s;
+}
+
+.link-button {
+  animation-fill-mode: forwards !important;
+  animation: rotate-back-90 0.2s;
+}
+
+.cancelExport,
+.cancel,
+.link,
+.delete,
+.add {
+  transition: transform 0.2s ease-in-out;
+}
+
+.cancelExport:hover,
+.cancel:hover {
+  transform: rotate(15deg);
+}
+.delete:hover {
+  transform: translate(0, -2px);
+}
+.add:hover {
+  transform: scale(1.1);
+}
+.export:hover {
+  transform: translate(0, 2px);
+}
+.help:hover {
+  animation: shake-hover 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.cog:hover {
+  animation: infinite-rotate-hover 5s linear infinite;
+}
+
+/* ~~~~~~~~~~ in-transitions  ~~~~~~~~~ */
+
+@keyframes scale-animate {
+  from {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes visible-animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down-animate {
+  from {
+    opacity: 0;
+    transform: translate(0, -100%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.category,
+.bookmark,
+.search-bar-title {
+  animation: scale-animate 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.editor {
+  animation: visible-animate 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.secondRow {
+  animation: slide-down-animate 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* ~~~~~~~~~~~ out-transitions ~~~~~~~~~~~ */
+
+@keyframes scale-animate-out {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes visible-animate-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-down-animate-out {
+  from {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -100%);
+  }
+}
+.scale-animate-out {
+  animation: scale-animate-out 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.slide-down-animate-out {
+  animation: slide-down-animate-out 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.visible-animate-out {
+  animation: visible-animate-out 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* ====================================================== */
+/* ======================= layout ======================= */
+/* ====================================================== */
+
+html {
+  font-size: 20px;
+}
+
+body {
+  background: var(--background);
+  margin: 0;
+  padding: 0;
+}
+
+/* ~~~~~~~~~~~~~ mode toggles & buttons ~~~~~~~~~~~~ */
+
+.modeToggle {
+  margin: 0.4rem;
+  justify-content: center;
+}
+
+/* The mode toggle button (edit ↔︎ view) */
+.modeToggle.right {
+  position: absolute;
+  right: 0;
+  z-index: 100;
+}
+
+/* The mode toggle button (edit ↔︎ view) */
+.modeToggle.bottom {
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+}
+
+.button {
+  display: inline;
+}
+
+.button {
+  background: none;
+  padding-right: 00.25rem;
+  padding-left: 00.25rem;
+  display: flex;
+  flex-direction: row;
+  /* center it hotizontally*/
+}
+
+.button .icon {
+  /* TODO: center the icon horizontally and vertically */
+  display: inline;
+}
+
+.filling {
+  fill: var(--color1);
+}
+
+.add-category-button .filling {
+  fill: var(--color9);
+}
+
+.add-bookmark-button .filling {
+  fill: var(--color6);
+}
+
+.search-bar-edit-button {
+  display: inline;
+}
+
+/* ~~~~~~~~~~~~ tooltip window ~~~~~~~~~~~ */
+
+*[data-tooltip] {
+  position: absolute;
+}
+
+*[data-tooltip]::after {
+  content: attr(data-tooltip);
+
+  position: absolute;
+  top: 2rem;
+  width: 4rem;
+  white-space: pre-line;
+
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.15s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out;
+  -ms-transition: opacity 0.15s ease-in-out;
+  -o-transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
+
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  background: var(--background);
+  color: var(--color6);
+  font-family: var(--font);
+  padding: 0.5rem;
+  border: 1px solid var(--color12);
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4);
+}
+
+*[data-tooltip].modeToggle.right::after {
+  right: 2.2rem;
+}
+
+*[data-tooltip].modeToggle.left::after {
+  left: 2.2rem;
+}
+
+*[data-tooltip].modeToggle.bottom::after {
+  top: -4.2rem;
+}
+
+*[data-tooltip].modeToggle.bottom.big::after {
+  width: 8rem;
+}
+
+*[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+/* ~~~~~~~~~~~~~~~~ editor ~~~~~~~~~~~~~~~ */
+
+.editor {
+  height: fit-content;
+  display: flex;
+  align-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.editor .firstRow {
+  display: flex;
+  height: fit-content;
+}
+.editor .firstRow > input {
+  width: 100%;
+}
+
+.editor .secondRow {
+  display: flex;
+  height: fit-content;
+}
+
+.editor .secondRow > input {
+  width: 100%;
+}
+
+.editToolbar {
+  align-items: center;
+  justify-content: center;
+  background: var(--color12);
+  z-index: 100;
+  display: flex;
+}
+
+/* ~~~~~~~~~~~~~ tree general ~~~~~~~~~~~~ */
+
+span {
+  color: var(--color10);
+}
+
+h1 {
+  display: inline;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--color9);
+}
+
+.prompt {
+  font-family: var(--font);
+  color: var(--color5);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* ~~~~~~~~~~~~ tree container ~~~~~~~~~~~ */
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.prompt ~ .prompt {
+  padding: 1.5rem 0 0.3125rem;
+}
+
+/* ~~~~~~~~~~ tree category row ~~~~~~~~~~ */
+
+.row {
+  display: flex;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ~~~~~~~~~ tree category column ~~~~~~~~ */
+
+.column {
+  flex: 50%;
+  padding: 5px;
+}
+
+/* ~~~~~~~~~~~~ tree bookmark category ~~~~~~~~~~~~ */
+
+.category h1 > * {
+  white-space: nowrap;
+  display: inline;
+  justify-items: right;
+  display: inline;
+  flex-direction: row;
+}
+
+.category {
+  min-width: 12rem;
+  max-width: 20rem;
+}
+
+li.bookmark > * {
+  display: inline-block;
+}
+
+.tree > ul {
+  margin: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.tree > h1 {
+  white-space: nowrap;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  position: relative;
+}
+
+li::before,
+li::after {
+  content: "";
+  position: absolute;
+  left: -0.75rem;
+}
+
+li::before {
+  border-top: var(--branch);
+  top: 0.75rem;
+  width: 0.5rem;
+}
+
+li::after {
+  border-left: var(--branch);
+  height: 100%;
+  top: 0.25rem;
+}
+
+li:last-child::after {
+  height: 0.5rem;
+}
+
+a {
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--color6);
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover {
+  color: var(--color12);
+  /*
+  background: var(--background);
+  */
+}
+
+/* ~~~~~~~~~~~~ theme changer ~~~~~~~~~~~~ */
+
+form h1 {
+  padding-left: 0.125rem;
+}
+
+input {
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--color6);
+  background-color: var(--background);
+  border-width: 1px;
+  border-color: var(--color12);
+  border-style: solid;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.theme-changer-container {
+  display: flex;
+}
+.theme-changer {
+  margin: 8px 16px; /* top/bottom || left/right */
+  display: inline-block;
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--color6);
+  background-color: var(--background);
+  border-width: 1px;
+  border-color: var(--color12);
+  border-style: solid;
+  height: 35px;
+  width: 302px;
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+}
+
+/* Some scroll customization */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--cursor);
+  border-radius: 8px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color6);
+}
+.theme-changer:hover {
+  height: 200px;
+  overflow-y: scroll;
+}
+/* ---------------------- */
+
+.theme-changer input {
+  /* hide radio-button */
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+}
+.theme-changer label {
+  cursor: pointer;
+  display: block;
+  padding: 4px;
+}
+.theme-changer label:hover {
+  color: var(--color12);
+}
